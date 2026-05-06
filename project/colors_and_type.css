@@ -1,0 +1,189 @@
+/* ============================================================
+   NOMAD AGENCY · COLORS + TYPE
+   "For brands that want to be felt, not just seen."
+   v1.0
+   ============================================================ */
+
+/* ---------- FONTS ----------
+   Headers : Arial Black (system stack — no webfont swap)
+   Body/UI : Helvetica Neue (system stack)
+   Both are universally available on macOS/iOS/Windows. We do not
+   load webfonts; the brand explicitly uses system Arial Black /
+   Helvetica Neue and any fallback should be Helvetica → Arial.
+*/
+
+:root {
+  /* ===== COLOR · PRIMARY PALETTE ===== */
+  --pitch-black:    #000000;
+  --pure-white:     #ffffff;
+  --deep-crimson:   #550022;
+
+  /* ===== COLOR · TINTS & SHADES ===== */
+  --crimson-dark:   #2e0012;   /* hover on crimson */
+  --crimson-mid:    #7a0030;   /* secondary crimson moments */
+  --black-90:       #1a1a1a;   /* softened body text on white */
+  --black-70:       #4d4d4d;   /* muted / secondary text */
+  --white-90:       #f2f2f2;   /* off-white card fills */
+  --white-70:       #b3b3b3;   /* disabled / placeholder */
+  --hairline:       rgba(255, 255, 255, 0.12);
+  --hairline-dark:  rgba(0, 0, 0, 0.12);
+
+  /* ===== SEMANTIC · DEFAULT (DARK) ===== */
+  --bg:             var(--pitch-black);
+  --bg-elev:        #0a0a0a;
+  --fg:             var(--pure-white);
+  --fg-muted:       var(--white-70);
+  --fg-subtle:      #7a7a7a;
+  --accent:         var(--deep-crimson);
+  --accent-hover:   var(--crimson-mid);
+  --accent-press:   var(--crimson-dark);
+  --border:         var(--hairline);
+  --border-strong:  rgba(255, 255, 255, 0.32);
+
+  /* ===== TYPOGRAPHY · FAMILIES ===== */
+  --font-display: "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body:    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:    "SFMono-Regular", "Menlo", "Consolas", monospace;
+
+  /* ===== TYPE · SCALE (px) ===== */
+  --fs-display:    72px;   /* 64–80 */
+  --fs-h1:         52px;   /* 44–56 */
+  --fs-h2:         32px;   /* 28–36 */
+  --fs-h3:         22px;   /* 20–24 */
+  --fs-body-lg:    18px;
+  --fs-body:       16px;
+  --fs-label:      12px;   /* 11–13 */
+  --fs-caption:    11px;
+
+  /* ===== TYPE · TRACKING ===== */
+  --track-display: -0.03em;
+  --track-h1:      -0.02em;
+  --track-h2:      -0.01em;
+  --track-h3:       0;
+  --track-label:    0.15em;
+
+  /* ===== TYPE · LEADING ===== */
+  --lh-display:    0.95;
+  --lh-heading:    1.05;
+  --lh-body:       1.6;
+  --lh-body-lg:    1.7;
+
+  /* ===== SPACING (8pt grid) ===== */
+  --sp-1:   4px;    /* micro */
+  --sp-2:   8px;    /* tight */
+  --sp-3:  16px;    /* base */
+  --sp-4:  24px;    /* small */
+  --sp-5:  32px;    /* medium */
+  --sp-6:  48px;    /* large */
+  --sp-7:  64px;    /* section */
+  --sp-8:  96px;    /* hero */
+  --sp-9: 128px;    /* page */
+
+  /* ===== RADII ===== */
+  --r-0:  0;       /* default. NOMAD is square. */
+  --r-1:  2px;     /* hairline rounding for inputs */
+  --r-pill: 999px; /* tag/pill only when needed */
+
+  /* ===== MOTION ===== */
+  --dur-micro:    200ms;
+  --dur-standard: 350ms;
+  --dur-hero:     600ms;
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:      cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-std:     cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- LIGHT INVERSE (used only in print / reversed UI) ---------- */
+.theme-light {
+  --bg:        var(--pure-white);
+  --bg-elev:   var(--white-90);
+  --fg:        var(--black-90);
+  --fg-muted:  var(--black-70);
+  --fg-subtle: #808080;
+  --border:        var(--hairline-dark);
+  --border-strong: rgba(0, 0, 0, 0.32);
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT STYLES
+   Apply to a container with class .nmd-type (or globally)
+   ============================================================ */
+
+.nmd-type, .nmd-type * { box-sizing: border-box; }
+
+.nmd-type {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.nmd-display, .nmd-type .display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.nmd-h1, .nmd-type h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--track-h1);
+  text-transform: uppercase;
+  margin: 0 0 var(--sp-4);
+}
+
+.nmd-h2, .nmd-type h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--track-h2);
+  margin: 0 0 var(--sp-3);
+}
+
+.nmd-h3, .nmd-type h3 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  letter-spacing: var(--track-h3);
+  margin: 0 0 var(--sp-3);
+}
+
+.nmd-body-lg, .nmd-type .body-lg {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body-lg);
+}
+
+.nmd-type p {
+  margin: 0 0 var(--sp-3);
+  max-width: 65ch;
+}
+
+.nmd-label, .nmd-type .label {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+}
+
+.nmd-caption, .nmd-type caption, .nmd-type .caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-caption);
+  color: var(--fg-muted);
+}
+
+.nmd-accent { color: var(--accent); }
+.nmd-rule   { display: inline-block; width: 40px; height: 2px; background: var(--accent); }
+.nmd-rule-full { display: block; width: 100%; height: 1px; background: var(--border); }
