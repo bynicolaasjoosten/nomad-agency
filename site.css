@@ -397,7 +397,7 @@ a { color: inherit; text-decoration: none; }
 /* ── Contact CTA ────────────────────────────────────────── */
 
 .cta-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
 }
 .cta-head {
   font-family: var(--font-display); font-weight: 500;

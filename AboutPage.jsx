@@ -27,7 +27,7 @@ const AboutPage = ({ onClose }) => {
             A two-person studio<br/>built on intent.
           </h1>
           <p className="about-intro">
-            NOMAD is a creative studio based in Amsterdam. We work at the intersection
+            NOMAD is a creative studio based in Amsterdam × Utrecht. We work at the intersection
             of film, brand, and social — making content that earns attention rather
             than interrupting it.
           </p>
@@ -61,11 +61,11 @@ const AboutPage = ({ onClose }) => {
         <div className="about-footer-row">
           <div>
             <span className="about-detail-label">Based in</span>
-            <span className="about-detail-value">Amsterdam, NL</span>
+            <span className="about-detail-value">Amsterdam × Utrecht</span>
           </div>
           <div>
             <span className="about-detail-label">Founded</span>
-            <span className="about-detail-value">2024</span>
+            <span className="about-detail-value">2026</span>
           </div>
           <div>
             <span className="about-detail-label">Disciplines</span>

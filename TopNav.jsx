@@ -17,7 +17,7 @@ const TopNav = ({ onHome, scrollTo, onAbout }) => {
           <span onClick={() => scrollTo('work')}>Work</span>
           <span onClick={onAbout}>About</span>
           <button className="btn nav-cta" onClick={() => scrollTo('contact')}>
-            <span>Start a project →</span>
+            <span>Get in touch →</span>
           </button>
         </div>
       </div>
