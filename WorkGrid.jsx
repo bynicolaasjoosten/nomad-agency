@@ -2,27 +2,26 @@
 
 const DEFAULT_CASES = [
   {
-    id: 'lights', title: 'WHEN THE LIGHTS\nSTAY ON',
-    client: 'KPN', kind: 'Brand Film', year: '2025',
+    id: 'airup', title: 'AIR UP',
+    client: 'Air Up', kind: 'Brand Film', year: '2025',
     vimeoId: '1190095444',
-    // Replace these with your own still image URLs:
     still: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2000&q=80',
   },
   {
-    id: 'salt', title: 'SALT OF\nTHE EARTH',
-    client: 'Heineken', kind: 'Commercial', year: '2025',
+    id: 'pathe', title: 'PATHÉ',
+    client: 'Pathé', kind: 'Commercial', year: '2025',
     vimeoId: '1190095162',
     still: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2000&q=80',
   },
   {
-    id: 'route', title: 'THE LONG\nWAY HOME',
-    client: 'NS', kind: 'Social', year: '2024',
+    id: 'maas', title: 'MAAS',
+    client: 'MAAS', kind: 'Social', year: '2024',
     vimeoId: '1190095356',
     still: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=2000&q=80',
   },
   {
-    id: 'still', title: 'STILLNESS\nAS A VERB',
-    client: 'Rituals', kind: 'Brand Film', year: '2024',
+    id: 'samsung', title: 'SAMSUNG',
+    client: 'Samsung', kind: 'Brand Film', year: '2024',
     vimeoId: '1190095527',
     still: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=2000&q=80',
   },
