@@ -37,23 +37,21 @@ const Manifesto = ({ editMode, Editable }) => {
 
 const StatRow = () => {
   const items = [
-    { value: '12', unit: 'yr', label: 'Studio age',      desc: 'Built between AMS and UTR since 2014.' },
-    { value: '64', unit: '',   label: 'Films delivered', desc: 'Commercials, brand films, social cuts.' },
-    { value: '08', unit: '',   label: 'Core team',       desc: 'Small enough to mean it.' },
-    { value: '03', unit: '',   label: 'Lions',           desc: 'Cannes, Eurobest, ADCN.' },
+    { value: '02', unit: '', label: 'Core team',      desc: 'One creative lead. One marketing lead.' },
+    { value: '100', unit: '%', label: 'Independent',  desc: 'No holding company. No middleman.' },
   ];
   return (
-    <section id="approach" className="section">
+    <section id="approach" className="section stat-section">
       <div className="container">
-        <div className="section-label" style={{ marginBottom: 32 }}>
+        <div className="section-label stat-section-label" style={{ marginBottom: 32 }}>
           <span className="num">03</span><span>By the numbers</span>
         </div>
-        <div className="stat-row">
+        <div className="stat-row" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
           {items.map((it, i) => (
             <div key={i} className="stat-cell">
               <span className="stat-lbl">{it.label}</span>
-              <span className="stat-num">{it.value}<span style={{ color: 'var(--accent)' }}>{it.unit}</span></span>
-              <span className="stat-desc">{it.desc}</span>
+              <span className="stat-num stat-num-dark">{it.value}<span style={{ color: 'var(--accent)' }}>{it.unit}</span></span>
+              <span className="stat-desc stat-desc-dark">{it.desc}</span>
             </div>
           ))}
         </div>
@@ -64,12 +62,16 @@ const StatRow = () => {
 
 const Clients = ({ visible }) => {
   if (!visible) return null;
-  const names = ['KPN', 'HEINEKEN', 'RITUALS', 'NS', 'PATHÉ', 'ING', 'PHILIPS', 'BOLS', 'ADIDAS NL', 'AJAX'];
+  const names = ['PATHÉ', 'SAMSUNG', 'AIR UP', 'TAMRON', 'GODOX'];
   const doubled = [...names, ...names];
   return (
     <section className="clients">
       <div className="clients-track">
-        {doubled.map((n, i) => <span key={i}>— {n}</span>)}
+        {doubled.map((n, i) => (
+          <span key={i}>
+            <span className="clients-sep">×</span> {n}
+          </span>
+        ))}
       </div>
     </section>
   );
@@ -78,8 +80,19 @@ const Clients = ({ visible }) => {
 const ContactCTA = ({ editMode, Editable }) => {
   const [heading, setHeading] = React.useState('Have something\nworth filming');
   const [body, setBody]       = React.useState("Send the brief, the budget, and the deadline. We'll come back fast.");
-  const [email, setEmail]     = React.useState('hello@nomad.studio →');
-  const [addr, setAddr]       = React.useState('NOMAD AGENCY\nAmsterdam — Prinsengracht 1015\nUtrecht — Oudegracht 230');
+
+  const [name, setName]       = React.useState('');
+  const [email, setEmail]     = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [sent, setSent]       = React.useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`New inquiry from ${name}`);
+    const bodyText = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:nomadagencynl@gmail.com?subject=${subject}&body=${bodyText}`;
+    setSent(true);
+  };
 
   return (
     <section id="contact" className="section" style={{ paddingTop: 128, paddingBottom: 128 }}>
@@ -97,15 +110,39 @@ const ContactCTA = ({ editMode, Editable }) => {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24, paddingBottom: 12 }}>
             <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />
-            <div>
-              <button className="btn primary">
-                <Editable tag="span" value={email} onChange={setEmail} editMode={editMode} />
-              </button>
-            </div>
-            <Editable
-              tag="p" style={{ fontSize: 12, lineHeight: 1.7, color: 'var(--white-70)', whiteSpace: 'pre-line' }}
-              value={addr} onChange={setAddr} editMode={editMode}
-            />
+            {!editMode && (
+              <form className="contact-form" onSubmit={handleSubmit}>
+                <input
+                  className="contact-input"
+                  type="text"
+                  placeholder="Your name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  required
+                />
+                <input
+                  className="contact-input"
+                  type="email"
+                  placeholder="Your email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  required
+                />
+                <textarea
+                  className="contact-input contact-textarea"
+                  placeholder="Tell us about your project"
+                  value={message}
+                  onChange={e => setMessage(e.target.value)}
+                  required
+                />
+                <button type="submit" className="btn primary" style={{ alignSelf: 'flex-start' }}>
+                  <span>Send message →</span>
+                </button>
+              </form>
+            )}
+            <p style={{ fontSize: 12, lineHeight: 1.7, color: 'var(--white-70)' }}>
+              NOMAD AGENCY · Amsterdam
+            </p>
           </div>
         </div>
       </div>
@@ -138,10 +175,10 @@ const Footer = () => (
         </div>
         <div>
           <span className="footer-lbl">Connect</span>
-          <div className="footer-item">Instagram <span style={{ color: 'var(--accent)' }}>↗</span></div>
+          <a href="https://www.instagram.com/nomadagencynl/" target="_blank" rel="noopener noreferrer" className="footer-item">Instagram <span style={{ color: 'var(--accent)' }}>↗</span></a>
           <div className="footer-item">Vimeo <span style={{ color: 'var(--accent)' }}>↗</span></div>
           <div className="footer-item">LinkedIn <span style={{ color: 'var(--accent)' }}>↗</span></div>
-          <div className="footer-item">hello@nomad.studio</div>
+          <div className="footer-item">nomadagencynl@gmail.com</div>
         </div>
       </div>
       <div className="footer-bottom">

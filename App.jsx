@@ -3,7 +3,7 @@
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "videoUrl": "https://vimeo.com/1189931004",
   "heroText": "FOR BRANDS\nTHAT WANT\nTO BE FELT",
-  "heroBody": "We make commercials, brand films, and social content for brands that are done blending in. An honest eye. A slow hand. No filler.",
+  "heroBody": "We make commercials, brand films, and social content for brands that are done blending in. An honest eye. A slow hand.",
   "heroEyebrow": "Creative & Film Studio · AMS × UTR",
   "showHeroBody": true,
   "showHeroCtas": true,

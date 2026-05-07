@@ -3,13 +3,13 @@
 const DEFAULT_CASES = [
   {
     id: 'airup', title: 'AIR UP',
-    client: 'Air Up', kind: 'Brand Film', year: '2025',
+    client: 'Air Up', kind: 'Social', year: '2025',
     vimeoId: '1190095444',
     still: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2000&q=80',
   },
   {
     id: 'pathe', title: 'PATHÉ',
-    client: 'Pathé', kind: 'Commercial', year: '2025',
+    client: 'Pathé', kind: 'Aftermovie', year: '2025',
     vimeoId: '1190095162',
     still: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2000&q=80',
   },
@@ -21,7 +21,7 @@ const DEFAULT_CASES = [
   },
   {
     id: 'samsung', title: 'SAMSUNG',
-    client: 'Samsung', kind: 'Brand Film', year: '2024',
+    client: 'Samsung', kind: 'Social', year: '2024',
     vimeoId: '1190095527',
     still: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=2000&q=80',
   },
@@ -64,9 +64,6 @@ const WorkGrid = ({ tweaks, cases, updateCase, editMode, Editable, onOpenProject
             Films we made.<br/>Brands we kept.
           </h2>
         </div>
-        <span className="body muted" style={{ maxWidth: '32ch' }}>
-          Four cases from the last two years. Click any tile to watch.
-        </span>
       </div>
       <div className="work-grid">
         {cases.map((c, i) => (
