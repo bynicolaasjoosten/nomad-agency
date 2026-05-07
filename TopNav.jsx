@@ -1,6 +1,6 @@
 /* TopNav.jsx */
 
-const TopNav = ({ onHome, scrollTo }) => {
+const TopNav = ({ onHome, scrollTo, onAbout }) => {
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
@@ -15,7 +15,7 @@ const TopNav = ({ onHome, scrollTo }) => {
         <span className="nav-wm" onClick={onHome}>NOMAD</span>
         <div className="nav-links">
           <span onClick={() => scrollTo('work')}>Work</span>
-          <span onClick={() => scrollTo('contact')}>Contact</span>
+          <span onClick={onAbout}>About</span>
           <button className="btn nav-cta" onClick={() => scrollTo('contact')}>
             <span>Start a project →</span>
           </button>

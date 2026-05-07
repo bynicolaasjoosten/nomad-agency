@@ -41,17 +41,17 @@ const StatRow = () => {
     { value: '100', unit: '%', label: 'Independent',  desc: 'No holding company. No middleman.' },
   ];
   return (
-    <section id="approach" className="section stat-section">
+    <section id="approach" className="section">
       <div className="container">
-        <div className="section-label stat-section-label" style={{ marginBottom: 32 }}>
+        <div className="section-label" style={{ marginBottom: 32 }}>
           <span className="num">03</span><span>By the numbers</span>
         </div>
         <div className="stat-row" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
           {items.map((it, i) => (
             <div key={i} className="stat-cell">
               <span className="stat-lbl">{it.label}</span>
-              <span className="stat-num stat-num-dark">{it.value}<span style={{ color: 'var(--accent)' }}>{it.unit}</span></span>
-              <span className="stat-desc stat-desc-dark">{it.desc}</span>
+              <span className="stat-num">{it.value}<span style={{ color: 'var(--accent)' }}>{it.unit}</span></span>
+              <span className="stat-desc">{it.desc}</span>
             </div>
           ))}
         </div>
