@@ -1,13 +1,12 @@
 /* Hero.jsx — full-bleed showreel hero */
 
-// Extract Vimeo video ID from a Vimeo URL
 const getVimeoId = (url) => {
   if (!url) return null;
   const m = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
   return m ? m[1] : null;
 };
 
-const Hero = ({ tweaks, scrollTo }) => {
+const Hero = ({ tweaks, setTweak, scrollTo, editMode, Editable }) => {
   const videoRef = React.useRef(null);
   const [muted, setMuted] = React.useState(true);
 
@@ -18,7 +17,6 @@ const Hero = ({ tweaks, scrollTo }) => {
     v.play().catch(() => {});
   }, [tweaks.videoUrl, muted]);
 
-  // Cinematic still frames for the CSS fallback reel
   const fallbackFrames = [
     'https://images.unsplash.com/photo-1517462964-21fdcec3f25b?w=2000&q=80',
     'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=2000&q=80',
@@ -30,8 +28,6 @@ const Hero = ({ tweaks, scrollTo }) => {
 
   const vimeoId = getVimeoId(tweaks.videoUrl);
   const isDirectVideo = !!tweaks.videoUrl && !vimeoId;
-
-  // Vimeo background embed — background=1 auto-plays, loops, mutes, hides controls
   const vimeoSrc = vimeoId
     ? `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&muted=1&background=1&byline=0&title=0&portrait=0`
     : null;
@@ -43,7 +39,7 @@ const Hero = ({ tweaks, scrollTo }) => {
       '--grain': tweaks.grain,
       '--reel-duration': tweaks.reelDuration + 's',
       '--hero-align': tweaks.heroAlign,
-      '--hero-size': (tweaks.heroSize || 8) + 'vw',
+      '--hero-size': (tweaks.heroSize || 4) + 'vw',
     }}>
       <div className="hero-media">
         {vimeoId ? (
@@ -51,23 +47,16 @@ const Hero = ({ tweaks, scrollTo }) => {
             src={vimeoSrc}
             allow="autoplay; fullscreen; picture-in-picture"
             style={{
-              position: 'absolute',
-              top: '50%', left: '50%',
-              width: '177.78vh',  /* 16:9 at full height */
-              height: '56.25vw',  /* 16:9 at full width */
+              position: 'absolute', top: '50%', left: '50%',
+              width: '177.78vh', height: '56.25vw',
               minWidth: '100%', minHeight: '100%',
               transform: 'translate(-50%, -50%)',
-              border: 0,
-              pointerEvents: 'none',
+              border: 0, pointerEvents: 'none',
             }}
             title="Showreel"
           />
         ) : isDirectVideo ? (
-          <video
-            ref={videoRef}
-            src={tweaks.videoUrl}
-            autoPlay loop muted={muted} playsInline
-          />
+          <video ref={videoRef} src={tweaks.videoUrl} autoPlay loop muted={muted} playsInline />
         ) : (
           <div className="showreel-fallback">
             {fallbackFrames.map((src, i) => (
@@ -84,13 +73,31 @@ const Hero = ({ tweaks, scrollTo }) => {
       <div className="container hero-content">
         <div className="hero-eyebrow-row">
           <span className="rule" />
-          <span className="eyebrow">Creative &amp; Film Studio · AMS × UTR</span>
+          <Editable
+            tag="span" className="eyebrow"
+            value={tweaks.heroEyebrow || 'Creative & Film Studio · AMS × UTR'}
+            onChange={v => setTweak('heroEyebrow', v)}
+            editMode={editMode}
+          />
         </div>
-        <h1 className="hero-display" dangerouslySetInnerHTML={{
-          __html: tweaks.heroText.replace(/\n/g, '<br/>') + `<span style="color:var(--accent)">.</span>`
-        }} />
+        {editMode ? (
+          <h1 className="hero-display editable" style={{ whiteSpace: 'pre-wrap' }}
+            contentEditable suppressContentEditableWarning
+            onBlur={e => setTweak('heroText', e.currentTarget.innerText)}>
+            {tweaks.heroText}
+          </h1>
+        ) : (
+          <h1 className="hero-display" dangerouslySetInnerHTML={{
+            __html: tweaks.heroText.replace(/\n/g, '<br/>') + `<span style="color:var(--accent)">.</span>`
+          }} />
+        )}
         {tweaks.showHeroBody && (
-          <p className="hero-supporting">{tweaks.heroBody}</p>
+          <Editable
+            tag="p" className="hero-supporting"
+            value={tweaks.heroBody}
+            onChange={v => setTweak('heroBody', v)}
+            editMode={editMode}
+          />
         )}
         {tweaks.showHeroCtas && (
           <div className="hero-cta-row">
@@ -107,7 +114,6 @@ const Hero = ({ tweaks, scrollTo }) => {
         </div>
       )}
 
-      {/* Mute toggle only for direct mp4 video (Vimeo background mode is always muted) */}
       {isDirectVideo && (
         <button className="reel-mute" onClick={() => setMuted(m => !m)} aria-label="Toggle sound">
           {muted ? (

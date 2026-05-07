@@ -1,32 +1,46 @@
 /* Sections.jsx — Manifesto, Stats, Clients, Contact, Footer */
 
-const Manifesto = () => (
-  <section id="manifesto" className="manifesto">
-    <div className="container">
-      <div className="section-label"><span className="num">02</span><span>Manifesto</span></div>
-      <div className="manifesto-block" style={{ marginTop: 40 }}>
-        <p className="manifesto-line">
-          Most brands<br/>want to be seen<span style={{color:'var(--accent)'}}>.</span>
-        </p>
-        <p className="manifesto-line" style={{ marginTop: 24 }}>
-          We help ours<br/>be felt.
-        </p>
-        <p className="body-lg muted" style={{ marginTop: 48, maxWidth: '52ch' }}>
-          Seen is an impression. Felt is a memory. We make commercials, brand
-          films, and social content for brands that are done blending in.
-          What holds it all together isn't format or platform — it's a point of view.
-        </p>
+const Manifesto = ({ editMode, Editable }) => {
+  const [line1, setLine1] = React.useState('Most brands\nwant to be seen');
+  const [line2, setLine2] = React.useState('We help ours\nbe felt.');
+  const [body, setBody]   = React.useState("Seen is an impression. Felt is a memory. We make commercials, brand films, and social content for brands that are done blending in. What holds it all together isn't format or platform — it's a point of view.");
+
+  return (
+    <section id="manifesto" className="manifesto">
+      <div className="container">
+        <div className="section-label"><span className="num">02</span><span>Manifesto</span></div>
+        <div className="manifesto-block" style={{ marginTop: 40 }}>
+          <Editable
+            tag="p" className="manifesto-line" style={{ whiteSpace: 'pre-line' }}
+            value={line1 + (editMode ? '' : '')}
+            onChange={setLine1}
+            editMode={editMode}
+          />
+          {!editMode && <span style={{ color: 'var(--accent)', fontSize: 'inherit', fontFamily: 'var(--font-display)', fontWeight: 900 }}>.</span>}
+          <Editable
+            tag="p" className="manifesto-line" style={{ marginTop: 24, whiteSpace: 'pre-line' }}
+            value={line2}
+            onChange={setLine2}
+            editMode={editMode}
+          />
+          <Editable
+            tag="p" className="body-lg muted" style={{ marginTop: 48, maxWidth: '52ch' }}
+            value={body}
+            onChange={setBody}
+            editMode={editMode}
+          />
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const StatRow = () => {
   const items = [
-    { value: '12', unit: 'yr', label: 'Studio age', desc: 'Built between AMS and UTR since 2014.' },
-    { value: '64', unit: '', label: 'Films delivered', desc: 'Commercials, brand films, social cuts.' },
-    { value: '08', unit: '', label: 'Core team', desc: 'Small enough to mean it.' },
-    { value: '03', unit: '', label: 'Lions', desc: 'Cannes, Eurobest, ADCN.' },
+    { value: '12', unit: 'yr', label: 'Studio age',      desc: 'Built between AMS and UTR since 2014.' },
+    { value: '64', unit: '',   label: 'Films delivered', desc: 'Commercials, brand films, social cuts.' },
+    { value: '08', unit: '',   label: 'Core team',       desc: 'Small enough to mean it.' },
+    { value: '03', unit: '',   label: 'Lions',           desc: 'Cannes, Eurobest, ADCN.' },
   ];
   return (
     <section id="approach" className="section">
@@ -38,7 +52,7 @@ const StatRow = () => {
           {items.map((it, i) => (
             <div key={i} className="stat-cell">
               <span className="stat-lbl">{it.label}</span>
-              <span className="stat-num">{it.value}<span style={{color:'var(--accent)'}}>{it.unit}</span></span>
+              <span className="stat-num">{it.value}<span style={{ color: 'var(--accent)' }}>{it.unit}</span></span>
               <span className="stat-desc">{it.desc}</span>
             </div>
           ))}
@@ -61,31 +75,43 @@ const Clients = ({ visible }) => {
   );
 };
 
-const ContactCTA = () => (
-  <section id="contact" className="section" style={{ paddingTop: 128, paddingBottom: 128 }}>
-    <div className="container">
-      <div className="cta-grid">
-        <div>
-          <div className="section-label"><span className="num">04</span><span>Get in Touch</span></div>
-          <h2 className="cta-head" style={{ marginTop: 24 }}>
-            Have something<br/>worth filming<span style={{color:'var(--accent)'}}>?</span>
-          </h2>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, paddingBottom: 12 }}>
-          <p className="body-lg">Send the brief, the budget, and the deadline. We'll come back fast.</p>
+const ContactCTA = ({ editMode, Editable }) => {
+  const [heading, setHeading] = React.useState('Have something\nworth filming');
+  const [body, setBody]       = React.useState("Send the brief, the budget, and the deadline. We'll come back fast.");
+  const [email, setEmail]     = React.useState('hello@nomad.studio →');
+  const [addr, setAddr]       = React.useState('NOMAD AGENCY\nAmsterdam — Prinsengracht 1015\nUtrecht — Oudegracht 230');
+
+  return (
+    <section id="contact" className="section" style={{ paddingTop: 128, paddingBottom: 128 }}>
+      <div className="container">
+        <div className="cta-grid">
           <div>
-            <button className="btn primary"><span>hello@nomad.studio →</span></button>
+            <div className="section-label"><span className="num">04</span><span>Get in Touch</span></div>
+            <Editable
+              tag="h2" className="cta-head" style={{ marginTop: 24, whiteSpace: 'pre-line' }}
+              value={heading}
+              onChange={setHeading}
+              editMode={editMode}
+            />
+            {!editMode && <span style={{ color: 'var(--accent)', fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(40px,6vw,80px)' }}>?</span>}
           </div>
-          <p style={{ fontSize: 12, lineHeight: 1.7, color: 'var(--white-70)' }}>
-            NOMAD AGENCY<br/>
-            Amsterdam — Prinsengracht 1015<br/>
-            Utrecht — Oudegracht 230
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24, paddingBottom: 12 }}>
+            <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />
+            <div>
+              <button className="btn primary">
+                <Editable tag="span" value={email} onChange={setEmail} editMode={editMode} />
+              </button>
+            </div>
+            <Editable
+              tag="p" style={{ fontSize: 12, lineHeight: 1.7, color: 'var(--white-70)', whiteSpace: 'pre-line' }}
+              value={addr} onChange={setAddr} editMode={editMode}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Footer = () => (
   <footer className="footer">
@@ -112,9 +138,9 @@ const Footer = () => (
         </div>
         <div>
           <span className="footer-lbl">Connect</span>
-          <div className="footer-item">Instagram <span style={{color:'var(--accent)'}}>↗</span></div>
-          <div className="footer-item">Vimeo <span style={{color:'var(--accent)'}}>↗</span></div>
-          <div className="footer-item">LinkedIn <span style={{color:'var(--accent)'}}>↗</span></div>
+          <div className="footer-item">Instagram <span style={{ color: 'var(--accent)' }}>↗</span></div>
+          <div className="footer-item">Vimeo <span style={{ color: 'var(--accent)' }}>↗</span></div>
+          <div className="footer-item">LinkedIn <span style={{ color: 'var(--accent)' }}>↗</span></div>
           <div className="footer-item">hello@nomad.studio</div>
         </div>
       </div>

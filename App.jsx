@@ -1,9 +1,10 @@
-/* App.jsx — root shell + tweaks wiring */
+/* App.jsx — root shell + tweaks + edit mode */
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "videoUrl": "https://vimeo.com/1189931004",
   "heroText": "FOR BRANDS\nTHAT WANT\nTO BE FELT",
   "heroBody": "We make commercials, brand films, and social content for brands that are done blending in. An honest eye. A slow hand. No filler.",
+  "heroEyebrow": "Creative & Film Studio · AMS × UTR",
   "showHeroBody": true,
   "showHeroCtas": true,
   "showReelMeta": true,
@@ -23,8 +24,42 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "sectionPad": 96
 }/*EDITMODE-END*/;
 
+/* Shared Editable component — renders plain when editMode is off,
+   contentEditable when on. Syncs on blur to avoid React cursor conflicts. */
+const Editable = ({ value, onChange, editMode, tag: Tag = 'span', className, style }) => {
+  const ref = React.useRef(null);
+  const focused = React.useRef(false);
+
+  React.useEffect(() => {
+    if (ref.current && !focused.current) {
+      ref.current.innerText = value || '';
+    }
+  }, [value]);
+
+  if (!editMode) return <Tag className={className} style={style}>{value}</Tag>;
+
+  return (
+    <Tag
+      ref={ref}
+      className={`${className || ''} editable`}
+      style={style}
+      contentEditable
+      suppressContentEditableWarning
+      onFocus={() => { focused.current = true; }}
+      onBlur={e => { focused.current = false; onChange(e.currentTarget.innerText); }}
+    >
+      {value}
+    </Tag>
+  );
+};
+
 const App = () => {
   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const [editMode, setEditMode] = React.useState(false);
+  const [cases, setCases] = React.useState(DEFAULT_CASES);
+
+  const updateCase = (id, field, val) =>
+    setCases(prev => prev.map(c => c.id === id ? { ...c, [field]: val } : c));
 
   React.useEffect(() => {
     const r = document.documentElement;
@@ -43,13 +78,15 @@ const App = () => {
   return (
     <>
       <TopNav onHome={goHome} scrollTo={scrollTo} />
-      <Hero tweaks={tweaks} scrollTo={scrollTo} />
-      <WorkGrid tweaks={tweaks} />
+      <Hero tweaks={tweaks} setTweak={setTweak} scrollTo={scrollTo} editMode={editMode} Editable={Editable} />
+      <WorkGrid tweaks={tweaks} cases={cases} updateCase={updateCase} editMode={editMode} Editable={Editable} />
       <Clients visible={tweaks.showClients} />
-      <Manifesto />
+      <Manifesto editMode={editMode} Editable={Editable} />
       <StatRow />
-      <ContactCTA />
+      <ContactCTA editMode={editMode} Editable={Editable} />
       <Footer />
+
+      <EditToolbar editMode={editMode} onToggleEdit={() => setEditMode(m => !m)} />
 
       <TweaksPanel title="Tweaks">
         <TweakSection label="Showreel">
@@ -57,36 +94,20 @@ const App = () => {
             label="Video URL (Vimeo or mp4)"
             value={tweaks.videoUrl}
             onChange={v => setTweak('videoUrl', v)}
-            placeholder="https://vimeo.com/… or https://…mp4"
+            placeholder="https://vimeo.com/…"
           />
-          <TweakSlider
-            label="Overlay darkness" min={0} max={0.9} step={0.05}
-            value={tweaks.heroOverlay}
-            onChange={v => setTweak('heroOverlay', v)}
-          />
-          <TweakSlider
-            label="Vignette" min={0} max={1} step={0.05}
-            value={tweaks.heroVignette}
-            onChange={v => setTweak('heroVignette', v)}
-          />
-          <TweakToggle
-            label="Vignette on" value={tweaks.showVignette}
-            onChange={v => setTweak('showVignette', v)}
-          />
-          <TweakSlider
-            label="Film grain" min={0} max={0.25} step={0.01}
-            value={tweaks.grain}
-            onChange={v => setTweak('grain', v)}
-          />
-          <TweakSlider
-            label="Reel cycle (s)" min={8} max={60} step={2}
-            value={tweaks.reelDuration}
-            onChange={v => setTweak('reelDuration', v)}
-          />
-          <TweakToggle
-            label="Reel meta strip" value={tweaks.showReelMeta}
-            onChange={v => setTweak('showReelMeta', v)}
-          />
+          <TweakSlider label="Overlay darkness" min={0} max={0.9} step={0.05}
+            value={tweaks.heroOverlay} onChange={v => setTweak('heroOverlay', v)} />
+          <TweakSlider label="Vignette" min={0} max={1} step={0.05}
+            value={tweaks.heroVignette} onChange={v => setTweak('heroVignette', v)} />
+          <TweakToggle label="Vignette on" value={tweaks.showVignette}
+            onChange={v => setTweak('showVignette', v)} />
+          <TweakSlider label="Film grain" min={0} max={0.25} step={0.01}
+            value={tweaks.grain} onChange={v => setTweak('grain', v)} />
+          <TweakSlider label="Reel cycle (s)" min={8} max={60} step={2}
+            value={tweaks.reelDuration} onChange={v => setTweak('reelDuration', v)} />
+          <TweakToggle label="Reel meta strip" value={tweaks.showReelMeta}
+            onChange={v => setTweak('showReelMeta', v)} />
         </TweakSection>
 
         <TweakSection label="Hero copy">
@@ -95,11 +116,8 @@ const App = () => {
             value={tweaks.heroText.replace(/\n/g, '\\n')}
             onChange={v => setTweak('heroText', v.replace(/\\n/g, '\n'))}
           />
-          <TweakSlider
-            label="Headline size (vw)" min={5} max={14} step={0.5}
-            value={tweaks.heroSize}
-            onChange={v => setTweak('heroSize', v)}
-          />
+          <TweakSlider label="Headline size (vw)" min={2} max={14} step={0.5}
+            value={tweaks.heroSize} onChange={v => setTweak('heroSize', v)} />
           <TweakRadio
             label="Vertical align"
             value={tweaks.heroAlign}
@@ -110,14 +128,10 @@ const App = () => {
             ]}
             onChange={v => setTweak('heroAlign', v)}
           />
-          <TweakToggle
-            label="Body paragraph" value={tweaks.showHeroBody}
-            onChange={v => setTweak('showHeroBody', v)}
-          />
-          <TweakToggle
-            label="CTA buttons" value={tweaks.showHeroCtas}
-            onChange={v => setTweak('showHeroCtas', v)}
-          />
+          <TweakToggle label="Body paragraph" value={tweaks.showHeroBody}
+            onChange={v => setTweak('showHeroBody', v)} />
+          <TweakToggle label="CTA buttons" value={tweaks.showHeroCtas}
+            onChange={v => setTweak('showHeroCtas', v)} />
         </TweakSection>
 
         <TweakSection label="Work grid">
@@ -131,11 +145,8 @@ const App = () => {
             ]}
             onChange={v => setTweak('gridCols', v)}
           />
-          <TweakSlider
-            label="Grid gap" min={0} max={48} step={2}
-            value={tweaks.gridGap}
-            onChange={v => setTweak('gridGap', v)}
-          />
+          <TweakSlider label="Grid gap" min={0} max={48} step={2}
+            value={tweaks.gridGap} onChange={v => setTweak('gridGap', v)} />
         </TweakSection>
 
         <TweakSection label="Brand">
@@ -148,25 +159,14 @@ const App = () => {
         </TweakSection>
 
         <TweakSection label="Layout">
-          <TweakSlider
-            label="Page max-width" min={1080} max={1800} step={20}
-            value={tweaks.pageMax}
-            onChange={v => setTweak('pageMax', v)}
-          />
-          <TweakSlider
-            label="Side padding" min={24} max={128} step={4}
-            value={tweaks.pagePad}
-            onChange={v => setTweak('pagePad', v)}
-          />
-          <TweakSlider
-            label="Section padding" min={48} max={160} step={8}
-            value={tweaks.sectionPad}
-            onChange={v => setTweak('sectionPad', v)}
-          />
-          <TweakToggle
-            label="Clients marquee" value={tweaks.showClients}
-            onChange={v => setTweak('showClients', v)}
-          />
+          <TweakSlider label="Page max-width" min={1080} max={1800} step={20}
+            value={tweaks.pageMax} onChange={v => setTweak('pageMax', v)} />
+          <TweakSlider label="Side padding" min={24} max={128} step={4}
+            value={tweaks.pagePad} onChange={v => setTweak('pagePad', v)} />
+          <TweakSlider label="Section padding" min={48} max={160} step={8}
+            value={tweaks.sectionPad} onChange={v => setTweak('sectionPad', v)} />
+          <TweakToggle label="Clients marquee" value={tweaks.showClients}
+            onChange={v => setTweak('showClients', v)} />
         </TweakSection>
       </TweaksPanel>
     </>

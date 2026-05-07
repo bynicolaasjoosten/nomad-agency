@@ -1,82 +1,54 @@
 /* WorkGrid.jsx — 2×2 grid at 4:3 aspect ratio */
 
 const DEFAULT_CASES = [
-  {
-    id: 'lights',
-    title: 'WHEN THE LIGHTS\nSTAY ON',
-    client: 'KPN',
-    kind: 'Brand Film',
-    year: '2025',
-    vimeoId: '1190095444',
-  },
-  {
-    id: 'salt',
-    title: 'SALT OF\nTHE EARTH',
-    client: 'Heineken',
-    kind: 'Commercial',
-    year: '2025',
-    vimeoId: '1190095162',
-  },
-  {
-    id: 'route',
-    title: 'THE LONG\nWAY HOME',
-    client: 'NS',
-    kind: 'Social',
-    year: '2024',
-    vimeoId: '1190095356',
-  },
-  {
-    id: 'still',
-    title: 'STILLNESS\nAS A VERB',
-    client: 'Rituals',
-    kind: 'Brand Film',
-    year: '2024',
-    vimeoId: '1190095527',
-  },
+  { id: 'lights', title: 'WHEN THE LIGHTS\nSTAY ON', client: 'KPN',      kind: 'Brand Film',  year: '2025', vimeoId: '1190095444' },
+  { id: 'salt',   title: 'SALT OF\nTHE EARTH',       client: 'Heineken', kind: 'Commercial',  year: '2025', vimeoId: '1190095162' },
+  { id: 'route',  title: 'THE LONG\nWAY HOME',        client: 'NS',       kind: 'Social',      year: '2024', vimeoId: '1190095356' },
+  { id: 'still',  title: 'STILLNESS\nAS A VERB',      client: 'Rituals',  kind: 'Brand Film',  year: '2024', vimeoId: '1190095527' },
 ];
 
-const CaseCard = ({ item, index }) => (
+const CaseCard = ({ item, index, editMode, Editable, onUpdate }) => (
   <div className="case-card">
     <div className="case-video-wrap">
       <iframe
         src={`https://player.vimeo.com/video/${item.vimeoId}?autoplay=1&loop=1&muted=1&background=1&byline=0&title=0&portrait=0`}
         allow="autoplay; fullscreen"
         style={{
-          position: 'absolute',
-          top: '50%', left: '50%',
-          width: '133.34%',
-          height: '100%',
+          position: 'absolute', top: '50%', left: '50%',
+          width: '133.34%', height: '100%',
           transform: 'translate(-50%, -50%)',
-          border: 0,
-          pointerEvents: 'none',
+          border: 0, pointerEvents: 'none',
         }}
         title={item.title}
       />
     </div>
     <div className="case-shade" />
     <div className="case-meta-top">
-      <span>{item.client}</span>
+      <Editable value={item.client} onChange={v => onUpdate(item.id, 'client', v)} editMode={editMode} />
       <span className="case-num">{String(index + 1).padStart(2, '0')}</span>
     </div>
     <div className="case-body">
-      <div className="case-title">{item.title}</div>
+      <Editable
+        tag="div" className="case-title" style={{ whiteSpace: 'pre-line' }}
+        value={item.title}
+        onChange={v => onUpdate(item.id, 'title', v)}
+        editMode={editMode}
+      />
       <div className="case-kind">
-        <span>{item.kind} · {item.year}</span>
+        <Editable value={item.kind} onChange={v => onUpdate(item.id, 'kind', v)} editMode={editMode} />
+        <span style={{ color: 'rgba(255,255,255,0.75)' }}> · </span>
+        <Editable value={item.year} onChange={v => onUpdate(item.id, 'year', v)} editMode={editMode} />
         <span className="arrow">→</span>
       </div>
     </div>
   </div>
 );
 
-const WorkGrid = ({ tweaks }) => (
-  <section
-    id="work"
-    className="section"
-    style={{
-      '--grid-cols': tweaks.gridCols,
-      '--grid-gap': tweaks.gridGap + 'px',
-    }}
-  >
+const WorkGrid = ({ tweaks, cases, updateCase, editMode, Editable }) => (
+  <section id="work" className="section" style={{
+    '--grid-cols': tweaks.gridCols,
+    '--grid-gap': tweaks.gridGap + 'px',
+  }}>
     <div className="container">
       <div className="work-head">
         <div>
@@ -90,8 +62,8 @@ const WorkGrid = ({ tweaks }) => (
         </span>
       </div>
       <div className="work-grid">
-        {DEFAULT_CASES.map((c, i) => (
-          <CaseCard key={c.id} item={c} index={i} />
+        {cases.map((c, i) => (
+          <CaseCard key={c.id} item={c} index={i} editMode={editMode} Editable={Editable} onUpdate={updateCase} />
         ))}
       </div>
     </div>
