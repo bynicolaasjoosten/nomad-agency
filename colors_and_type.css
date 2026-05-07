@@ -3,8 +3,11 @@
    "For brands that want to be felt, not just seen."
    ============================================================ */
 
-/* Headers : Arial Black (system stack)
-   Body/UI : Helvetica Neue (system stack) */
+/* Headers : Rubik (Google Fonts)
+   Body/UI : Ranade (Fontshare) */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=ranade@400,500,700&display=swap');
 
 :root {
   /* ===== COLOR · PRIMARY PALETTE ===== */
@@ -35,8 +38,8 @@
   --border-strong:  rgba(255, 255, 255, 0.32);
 
   /* ===== TYPOGRAPHY · FAMILIES ===== */
-  --font-display: "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-body:    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Rubik", "Arial Black", Arial, sans-serif;
+  --font-body:    "Ranade", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono:    "SFMono-Regular", "Menlo", "Consolas", monospace;
 
   /* ===== TYPE · SCALE (px) ===== */
