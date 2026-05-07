@@ -15,9 +15,10 @@ const TopNav = ({ onHome, scrollTo }) => {
         <span className="nav-wm" onClick={onHome}>NOMAD</span>
         <div className="nav-links">
           <span onClick={() => scrollTo('work')}>Work</span>
-          <span onClick={() => scrollTo('manifesto')}>Studio</span>
-          <span onClick={() => scrollTo('approach')}>Approach</span>
           <span onClick={() => scrollTo('contact')}>Contact</span>
+          <button className="btn nav-cta" onClick={() => scrollTo('contact')}>
+            <span>Start a project →</span>
+          </button>
         </div>
       </div>
     </nav>

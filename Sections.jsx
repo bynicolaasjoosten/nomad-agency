@@ -85,13 +85,28 @@ const ContactCTA = ({ editMode, Editable }) => {
   const [email, setEmail]     = React.useState('');
   const [message, setMessage] = React.useState('');
   const [sent, setSent]       = React.useState(false);
+  const [sending, setSending] = React.useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`New inquiry from ${name}`);
-    const bodyText = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-    window.location.href = `mailto:nomadagencynl@gmail.com?subject=${subject}&body=${bodyText}`;
-    setSent(true);
+    setSending(true);
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/nomadagencynl@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+      if (res.ok) {
+        setSent(true);
+      }
+    } catch {
+      /* fallback: open mail client */
+      const subject = encodeURIComponent(`New inquiry from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      window.location.href = `mailto:nomadagencynl@gmail.com?subject=${subject}&body=${body}`;
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -110,7 +125,7 @@ const ContactCTA = ({ editMode, Editable }) => {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24, paddingBottom: 12 }}>
             <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />
-            {!editMode && (
+            {!editMode && !sent && (
               <form className="contact-form" onSubmit={handleSubmit}>
                 <input
                   className="contact-input"
@@ -135,10 +150,16 @@ const ContactCTA = ({ editMode, Editable }) => {
                   onChange={e => setMessage(e.target.value)}
                   required
                 />
-                <button type="submit" className="btn primary" style={{ alignSelf: 'flex-start' }}>
-                  <span>Send message →</span>
+                <button type="submit" className="btn primary" style={{ alignSelf: 'flex-start' }} disabled={sending}>
+                  <span>{sending ? 'Sending…' : 'Send message →'}</span>
                 </button>
               </form>
+            )}
+            {!editMode && sent && (
+              <div style={{ padding: '24px 0' }}>
+                <p style={{ fontSize: 18, fontWeight: 500, color: '#fff', marginBottom: 8 }}>Message sent.</p>
+                <p style={{ fontSize: 14, color: 'var(--white-70)' }}>We'll get back to you soon.</p>
+              </div>
             )}
             <p style={{ fontSize: 12, lineHeight: 1.7, color: 'var(--white-70)' }}>
               NOMAD AGENCY · Amsterdam
