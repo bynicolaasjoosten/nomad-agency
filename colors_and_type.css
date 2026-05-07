@@ -1,0 +1,98 @@
+/* ============================================================
+   NOMAD AGENCY · COLORS + TYPE
+   "For brands that want to be felt, not just seen."
+   ============================================================ */
+
+/* Headers : Arial Black (system stack)
+   Body/UI : Helvetica Neue (system stack) */
+
+:root {
+  /* ===== COLOR · PRIMARY PALETTE ===== */
+  --pitch-black:    #000000;
+  --pure-white:     #ffffff;
+  --deep-crimson:   #550022;
+
+  /* ===== COLOR · TINTS & SHADES ===== */
+  --crimson-dark:   #2e0012;
+  --crimson-mid:    #7a0030;
+  --black-90:       #1a1a1a;
+  --black-70:       #4d4d4d;
+  --white-90:       #f2f2f2;
+  --white-70:       #b3b3b3;
+  --hairline:       rgba(255, 255, 255, 0.12);
+  --hairline-dark:  rgba(0, 0, 0, 0.12);
+
+  /* ===== SEMANTIC · DEFAULT (DARK) ===== */
+  --bg:             var(--pitch-black);
+  --bg-elev:        #0a0a0a;
+  --fg:             var(--pure-white);
+  --fg-muted:       var(--white-70);
+  --fg-subtle:      #7a7a7a;
+  --accent:         var(--deep-crimson);
+  --accent-hover:   var(--crimson-mid);
+  --accent-press:   var(--crimson-dark);
+  --border:         var(--hairline);
+  --border-strong:  rgba(255, 255, 255, 0.32);
+
+  /* ===== TYPOGRAPHY · FAMILIES ===== */
+  --font-display: "Arial Black", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body:    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:    "SFMono-Regular", "Menlo", "Consolas", monospace;
+
+  /* ===== TYPE · SCALE (px) ===== */
+  --fs-display:    72px;
+  --fs-h1:         52px;
+  --fs-h2:         32px;
+  --fs-h3:         22px;
+  --fs-body-lg:    18px;
+  --fs-body:       16px;
+  --fs-label:      12px;
+  --fs-caption:    11px;
+
+  /* ===== TYPE · TRACKING ===== */
+  --track-display: -0.03em;
+  --track-h1:      -0.02em;
+  --track-h2:      -0.01em;
+  --track-h3:       0;
+  --track-label:    0.15em;
+
+  /* ===== TYPE · LEADING ===== */
+  --lh-display:    0.95;
+  --lh-heading:    1.05;
+  --lh-body:       1.6;
+  --lh-body-lg:    1.7;
+
+  /* ===== SPACING (8pt grid) ===== */
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:  16px;
+  --sp-4:  24px;
+  --sp-5:  32px;
+  --sp-6:  48px;
+  --sp-7:  64px;
+  --sp-8:  96px;
+  --sp-9: 128px;
+
+  /* ===== RADII ===== */
+  --r-0:    0;
+  --r-1:    2px;
+  --r-pill: 999px;
+
+  /* ===== MOTION ===== */
+  --dur-micro:    200ms;
+  --dur-standard: 350ms;
+  --dur-hero:     600ms;
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:      cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-std:     cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-light {
+  --bg:        var(--pure-white);
+  --bg-elev:   var(--white-90);
+  --fg:        var(--black-90);
+  --fg-muted:  var(--black-70);
+  --fg-subtle: #808080;
+  --border:        var(--hairline-dark);
+  --border-strong: rgba(0, 0, 0, 0.32);
+}
