@@ -7,7 +7,7 @@ const DEFAULT_CASES = [
     client: 'KPN',
     kind: 'Brand Film',
     year: '2025',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2000&q=80',
+    vimeoId: '1190095444',
   },
   {
     id: 'salt',
@@ -15,7 +15,7 @@ const DEFAULT_CASES = [
     client: 'Heineken',
     kind: 'Commercial',
     year: '2025',
-    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2000&q=80',
+    vimeoId: '1190095162',
   },
   {
     id: 'route',
@@ -23,7 +23,7 @@ const DEFAULT_CASES = [
     client: 'NS',
     kind: 'Social',
     year: '2024',
-    image: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=2000&q=80',
+    vimeoId: '1190095356',
   },
   {
     id: 'still',
@@ -31,13 +31,28 @@ const DEFAULT_CASES = [
     client: 'Rituals',
     kind: 'Brand Film',
     year: '2024',
-    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=2000&q=80',
+    vimeoId: '1190095527',
   },
 ];
 
 const CaseCard = ({ item, index }) => (
   <div className="case-card">
-    <div className="case-img" style={{ backgroundImage: `url(${item.image})` }} />
+    <div className="case-video-wrap">
+      <iframe
+        src={`https://player.vimeo.com/video/${item.vimeoId}?autoplay=1&loop=1&muted=1&background=1&byline=0&title=0&portrait=0`}
+        allow="autoplay; fullscreen"
+        style={{
+          position: 'absolute',
+          top: '50%', left: '50%',
+          width: '133.34%',
+          height: '100%',
+          transform: 'translate(-50%, -50%)',
+          border: 0,
+          pointerEvents: 'none',
+        }}
+        title={item.title}
+      />
+    </div>
     <div className="case-shade" />
     <div className="case-meta-top">
       <span>{item.client}</span>
