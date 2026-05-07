@@ -1,39 +1,47 @@
-/* WorkGrid.jsx — 2×2 grid at 4:3 aspect ratio */
+/* WorkGrid.jsx — 2×2 grid, still images on cards, video in modal */
 
 const DEFAULT_CASES = [
-  { id: 'lights', title: 'WHEN THE LIGHTS\nSTAY ON', client: 'KPN',      kind: 'Brand Film',  year: '2025', vimeoId: '1190095444' },
-  { id: 'salt',   title: 'SALT OF\nTHE EARTH',       client: 'Heineken', kind: 'Commercial',  year: '2025', vimeoId: '1190095162' },
-  { id: 'route',  title: 'THE LONG\nWAY HOME',        client: 'NS',       kind: 'Social',      year: '2024', vimeoId: '1190095356' },
-  { id: 'still',  title: 'STILLNESS\nAS A VERB',      client: 'Rituals',  kind: 'Brand Film',  year: '2024', vimeoId: '1190095527' },
+  {
+    id: 'lights', title: 'WHEN THE LIGHTS\nSTAY ON',
+    client: 'KPN', kind: 'Brand Film', year: '2025',
+    vimeoId: '1190095444',
+    // Replace these with your own still image URLs:
+    still: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2000&q=80',
+  },
+  {
+    id: 'salt', title: 'SALT OF\nTHE EARTH',
+    client: 'Heineken', kind: 'Commercial', year: '2025',
+    vimeoId: '1190095162',
+    still: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2000&q=80',
+  },
+  {
+    id: 'route', title: 'THE LONG\nWAY HOME',
+    client: 'NS', kind: 'Social', year: '2024',
+    vimeoId: '1190095356',
+    still: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=2000&q=80',
+  },
+  {
+    id: 'still', title: 'STILLNESS\nAS A VERB',
+    client: 'Rituals', kind: 'Brand Film', year: '2024',
+    vimeoId: '1190095527',
+    still: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=2000&q=80',
+  },
 ];
 
-const CaseCard = ({ item, index, editMode, Editable, onUpdate }) => (
-  <div className="case-card">
-    <div className="case-video-wrap">
-      <iframe
-        src={`https://player.vimeo.com/video/${item.vimeoId}?autoplay=1&loop=1&muted=1&background=1&byline=0&title=0&portrait=0`}
-        allow="autoplay; fullscreen"
-        style={{
-          position: 'absolute', top: '50%', left: '50%',
-          width: '133.34%', height: '100%',
-          transform: 'translate(-50%, -50%)',
-          border: 0, pointerEvents: 'none',
-        }}
-        title={item.title}
-      />
-    </div>
+const CaseCard = ({ item, index, editMode, Editable, onUpdate, onOpen }) => (
+  <div className="case-card" onClick={!editMode ? onOpen : undefined}>
+    <div className="case-img" style={{ backgroundImage: `url(${item.still})` }} />
     <div className="case-shade" />
+    <div className="case-play-hint">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
     <div className="case-meta-top">
       <Editable value={item.client} onChange={v => onUpdate(item.id, 'client', v)} editMode={editMode} />
       <span className="case-num">{String(index + 1).padStart(2, '0')}</span>
     </div>
     <div className="case-body">
-      <Editable
-        tag="div" className="case-title" style={{ whiteSpace: 'pre-line' }}
-        value={item.title}
-        onChange={v => onUpdate(item.id, 'title', v)}
-        editMode={editMode}
-      />
+      <Editable tag="div" className="case-title" style={{ whiteSpace: 'pre-line' }}
+        value={item.title} onChange={v => onUpdate(item.id, 'title', v)} editMode={editMode} />
       <div className="case-kind">
         <Editable value={item.kind} onChange={v => onUpdate(item.id, 'kind', v)} editMode={editMode} />
         <span style={{ color: 'rgba(255,255,255,0.75)' }}> · </span>
@@ -44,7 +52,7 @@ const CaseCard = ({ item, index, editMode, Editable, onUpdate }) => (
   </div>
 );
 
-const WorkGrid = ({ tweaks, cases, updateCase, editMode, Editable }) => (
+const WorkGrid = ({ tweaks, cases, updateCase, editMode, Editable, onOpenProject }) => (
   <section id="work" className="section" style={{
     '--grid-cols': tweaks.gridCols,
     '--grid-gap': tweaks.gridGap + 'px',
@@ -58,12 +66,14 @@ const WorkGrid = ({ tweaks, cases, updateCase, editMode, Editable }) => (
           </h2>
         </div>
         <span className="body muted" style={{ maxWidth: '32ch' }}>
-          Four cases from the last two years. Click any tile for the full read.
+          Four cases from the last two years. Click any tile to watch.
         </span>
       </div>
       <div className="work-grid">
         {cases.map((c, i) => (
-          <CaseCard key={c.id} item={c} index={i} editMode={editMode} Editable={Editable} onUpdate={updateCase} />
+          <CaseCard key={c.id} item={c} index={i}
+            editMode={editMode} Editable={Editable} onUpdate={updateCase}
+            onOpen={() => onOpenProject({ ...c, index: i })} />
         ))}
       </div>
     </div>
