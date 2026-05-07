@@ -10,7 +10,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "showVignette": true,
   "heroOverlay": 0.55,
   "heroVignette": 1,
-  "heroSize": 8,
+  "heroSize": 4,
   "heroAlign": "flex-end",
   "grain": 0.08,
   "reelDuration": 24,
