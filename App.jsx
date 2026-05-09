@@ -7,7 +7,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "heroEyebrow": "Creative & Film Studio · AMS × UTR",
   "showHeroBody": true,
   "showHeroCtas": true,
-  "showReelMeta": true,
+  "showReelMeta": false,
   "showVignette": false,
   "heroOverlay": 0,
   "heroVignette": 0,
