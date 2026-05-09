@@ -91,19 +91,6 @@ const App = () => {
     const work = document.getElementById('work');
     if (!hero || !work) return;
 
-    gsap.set(work, { rotation: 30, transformOrigin: 'bottom left' });
-
-    const rotateTween = gsap.to(work, {
-      rotation: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: work,
-        start: 'top bottom',
-        end: 'top 25%',
-        scrub: true,
-      },
-    });
-
     const pin = ScrollTrigger.create({
       trigger: hero,
       start: 'bottom bottom',
@@ -115,7 +102,6 @@ const App = () => {
     ScrollTrigger.refresh();
 
     return () => {
-      rotateTween.scrollTrigger?.kill();
       pin.kill();
     };
   }, []);

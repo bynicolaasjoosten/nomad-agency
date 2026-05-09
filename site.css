@@ -103,7 +103,6 @@ a { color: inherit; text-decoration: none; }
 #work {
   position: relative;
   z-index: 2;
-  will-change: transform;
 }
 .hero-media {
   position: absolute; inset: 0;
