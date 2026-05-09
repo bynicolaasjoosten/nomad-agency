@@ -3,7 +3,7 @@
 const Manifesto = ({ editMode, Editable }) => {
   const [line1, setLine1] = React.useState('Most brands\nwant to be seen.');
   const [line2, setLine2] = React.useState('We help ours\nbe felt.');
-  const [body, setBody]   = React.useState("Seen is an impression. Felt is a memory. We make commercials, brand films, and social content for brands that are done blending in. What holds it all together isn't format or platform — it's a point of view.");
+  const [body, setBody]   = React.useState("Seen is an impression. Felt is a memory. We make commercials, brand films, and social content for brands worth remembering. What holds it all together isn't format or platform — it's a point of view.");
 
   return (
     <section id="manifesto" className="manifesto">
@@ -78,7 +78,7 @@ const Clients = ({ visible }) => {
 
 const ContactCTA = ({ editMode, Editable }) => {
   const [heading, setHeading] = React.useState('Have something worth filming?');
-  const [body, setBody]       = React.useState("Send the idea! We'll come back fast.");
+  const [body, setBody]       = React.useState("Send the idea. We move quickly.");
 
   const [name, setName]       = React.useState('');
   const [email, setEmail]     = React.useState('');
