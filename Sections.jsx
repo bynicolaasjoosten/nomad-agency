@@ -111,63 +111,62 @@ const ContactCTA = ({ editMode, Editable }) => {
 
   return (
     <section id="contact" className="section" style={{ paddingTop: 128, paddingBottom: 128 }}>
-      <div className="container">
-        <div className="cta-grid">
-          <div>
-            <div className="section-label"><span className="num">03</span><span>Get in Touch</span></div>
-            <Editable
-              tag="h2" className="cta-head" style={{ marginTop: 24, whiteSpace: 'pre-line' }}
-              value={heading}
-              onChange={setHeading}
-              editMode={editMode}
-            />
-          </div>
-          <div className="cta-panel">
-            <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />
-            {!editMode && !sent && (
-              <form className="contact-form" onSubmit={handleSubmit}>
-                <input
-                  className="contact-input"
-                  type="text"
-                  placeholder="Your name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
-                  required
-                />
-                <input
-                  className="contact-input"
-                  type="email"
-                  placeholder="Your email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  required
-                />
-                <textarea
-                  className="contact-input contact-textarea"
-                  placeholder="Tell us about your project"
-                  value={message}
-                  onChange={e => setMessage(e.target.value)}
-                  required
-                />
-                <button type="submit" className="btn primary" style={{ alignSelf: 'flex-start' }} disabled={sending}>
-                  <span>{sending ? 'Sending…' : 'Send message →'}</span>
-                </button>
-              </form>
-            )}
-            {!editMode && sent && (
-              <div style={{ padding: '24px 0' }}>
-                <p style={{ fontSize: 18, fontWeight: 500, marginBottom: 8 }}>Message sent.</p>
-                <p style={{ fontSize: 14, opacity: 0.5 }}>We'll get back to you soon.</p>
-              </div>
-            )}
-            <p style={{ fontSize: 12, lineHeight: 1.7, opacity: 0.45 }}>
-              Love, Nomad Agency
-            </p>
-          </div>
+      <div className="contact-layout">
+        <div className="contact-left">
+          <div className="section-label"><span className="num">03</span><span>Get in Touch</span></div>
+          <Editable
+            tag="h2" className="cta-head" style={{ marginTop: 24, whiteSpace: 'pre-line' }}
+            value={heading}
+            onChange={setHeading}
+            editMode={editMode}
+          />
+        </div>
+        <div className="cta-panel">
+          <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />
+          {!editMode && !sent && (
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <input
+                className="contact-input"
+                type="text"
+                placeholder="Your name"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                required
+              />
+              <input
+                className="contact-input"
+                type="email"
+                placeholder="Your email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+              />
+              <textarea
+                className="contact-input contact-textarea"
+                placeholder="Tell us about your project"
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+                required
+              />
+              <button type="submit" className="btn primary" style={{ alignSelf: 'flex-start' }} disabled={sending}>
+                <span>{sending ? 'Sending…' : 'Send message →'}</span>
+              </button>
+            </form>
+          )}
+          {!editMode && sent && (
+            <div style={{ padding: '24px 0' }}>
+              <p style={{ fontSize: 18, fontWeight: 500, marginBottom: 8 }}>Message sent.</p>
+              <p style={{ fontSize: 14, opacity: 0.5 }}>We'll get back to you soon.</p>
+            </div>
+          )}
+          <p style={{ fontSize: 12, lineHeight: 1.7, opacity: 0.45 }}>
+            Love, Nomad Agency
+          </p>
         </div>
       </div>
     </section>
   );
+
 };
 
 const Footer = () => (
