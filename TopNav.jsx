@@ -12,7 +12,7 @@ const TopNav = ({ onHome, scrollTo, onAbout }) => {
   return (
     <nav className={`nav-fixed ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner">
-        <span className="nav-wm" onClick={onHome}>NOMAD</span>
+        <span className="nav-wm" onClick={onHome}>Nomad Agency</span>
         <div className="nav-links">
           <span onClick={() => scrollTo('work')}>Work</span>
           <span onClick={onAbout}>About</span>

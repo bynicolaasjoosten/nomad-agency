@@ -176,9 +176,9 @@ const Footer = () => (
     <div className="container">
       <div className="footer-grid">
         <div>
-          <span className="footer-wm">NOMAD</span>
+          <span className="footer-wm">Nomad Agency</span>
           <p style={{ fontSize: 12, lineHeight: 1.8, color: 'var(--white-70)', marginTop: 14, maxWidth: '24ch' }}>
-            Creative &amp; film studio.<br/>Amsterdam × Utrecht.
+            Creative &amp; film studio<br/>Amsterdam × Utrecht
           </p>
         </div>
         <div>

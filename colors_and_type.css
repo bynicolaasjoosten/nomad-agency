@@ -25,17 +25,17 @@
   --hairline:       rgba(255, 255, 255, 0.12);
   --hairline-dark:  rgba(0, 0, 0, 0.12);
 
-  /* ===== SEMANTIC · DEFAULT (DARK) ===== */
-  --bg:             var(--pitch-black);
-  --bg-elev:        #0a0a0a;
-  --fg:             var(--pure-white);
-  --fg-muted:       var(--white-70);
-  --fg-subtle:      #7a7a7a;
+  /* ===== SEMANTIC · DEFAULT (LIGHT) ===== */
+  --bg:             var(--pure-white);
+  --bg-elev:        #f4f4f4;
+  --fg:             var(--pitch-black);
+  --fg-muted:       var(--black-70);
+  --fg-subtle:      #808080;
   --accent:         var(--deep-crimson);
   --accent-hover:   var(--crimson-mid);
   --accent-press:   var(--crimson-dark);
-  --border:         var(--hairline);
-  --border-strong:  rgba(255, 255, 255, 0.32);
+  --border:         var(--hairline-dark);
+  --border-strong:  rgba(0, 0, 0, 0.32);
 
   /* ===== TYPOGRAPHY · FAMILIES ===== */
   --font-display: "Rubik", "Arial Black", Arial, sans-serif;

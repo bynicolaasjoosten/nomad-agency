@@ -14,20 +14,20 @@ const AboutPage = ({ onClose }) => {
   return (
     <div className="about-overlay">
       <div className="about-nav">
-        <span className="nav-wm" onClick={onClose}>NOMAD</span>
+        <span className="nav-wm" onClick={onClose}>Nomad Agency</span>
         <button className="about-close" onClick={onClose}>Close ×</button>
       </div>
 
       <div className="about-body-wrap">
         <div className="about-hero">
-          <div className="section-label" style={{ color: 'rgba(255,255,255,0.4)' }}>
+          <div className="section-label" style={{ color: 'rgba(0,0,0,0.4)' }}>
             <span className="num">00</span><span>About</span>
           </div>
           <h1 className="about-heading">
             A two-person studio<br/>built on intent.
           </h1>
           <p className="about-intro">
-            NOMAD is a creative studio based in Amsterdam × Utrecht. We work at the intersection
+            Nomad Agency is a creative studio based in Amsterdam × Utrecht. We work at the intersection
             of film, brand, and social — making content that earns attention rather
             than interrupting it.
           </p>
