@@ -237,6 +237,10 @@ a { color: inherit; text-decoration: none; }
 }
 #work .section-label { color: rgba(255,255,255,0.7); }
 #work .section-label .num { color: #fff; }
+#manifesto .section-label { color: rgba(255,255,255,0.7); }
+#manifesto .section-label .num { color: #fff; }
+#contact .section-label { color: rgba(255,255,255,0.7); }
+#contact .section-label .num { color: #fff; }
 
 #work .work-head {
   display: flex; justify-content: space-between; align-items: flex-end;

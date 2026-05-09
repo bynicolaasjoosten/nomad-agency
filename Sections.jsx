@@ -114,7 +114,7 @@ const ContactCTA = ({ editMode, Editable }) => {
       <div className="container">
         <div className="cta-grid">
           <div>
-            <div className="section-label"><span className="num">04</span><span>Get in Touch</span></div>
+            <div className="section-label"><span className="num">03</span><span>Get in Touch</span></div>
             <Editable
               tag="h2" className="cta-head" style={{ marginTop: 24, whiteSpace: 'pre-line' }}
               value={heading}
