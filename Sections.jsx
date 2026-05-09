@@ -122,7 +122,7 @@ const ContactCTA = ({ editMode, Editable }) => {
               editMode={editMode}
             />
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24, paddingBottom: 12 }}>
+          <div className="cta-panel">
             <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />
             {!editMode && !sent && (
               <form className="contact-form" onSubmit={handleSubmit}>
@@ -156,11 +156,11 @@ const ContactCTA = ({ editMode, Editable }) => {
             )}
             {!editMode && sent && (
               <div style={{ padding: '24px 0' }}>
-                <p style={{ fontSize: 18, fontWeight: 500, color: '#fff', marginBottom: 8 }}>Message sent.</p>
-                <p style={{ fontSize: 14, color: 'var(--white-70)' }}>We'll get back to you soon.</p>
+                <p style={{ fontSize: 18, fontWeight: 500, marginBottom: 8 }}>Message sent.</p>
+                <p style={{ fontSize: 14, opacity: 0.5 }}>We'll get back to you soon.</p>
               </div>
             )}
-            <p style={{ fontSize: 12, lineHeight: 1.7, color: 'var(--white-70)' }}>
+            <p style={{ fontSize: 12, lineHeight: 1.7, opacity: 0.45 }}>
               Love, Nomad Agency
             </p>
           </div>
