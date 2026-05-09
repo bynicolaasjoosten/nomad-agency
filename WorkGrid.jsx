@@ -3,25 +3,25 @@
 const DEFAULT_CASES = [
   {
     id: 'airup', title: 'AIR UP',
-    client: 'Air Up', kind: 'Social', year: '2025',
+    client: 'Air Up', kind: 'Social', year: '2026',
     vimeoId: '1190095444',
     still: 'img-airup.png',
   },
   {
     id: 'pathe', title: 'PATHÉ',
-    client: 'Pathé', kind: 'Aftermovie', year: '2025',
+    client: 'Pathé', kind: 'Aftermovie', year: '2026',
     vimeoId: '1190095162',
     still: 'img-pathe.jpg',
   },
   {
     id: 'maas', title: 'MAAS',
-    client: 'MAAS', kind: 'Social', year: '2024',
+    client: 'MAAS', kind: 'Social', year: '2026',
     vimeoId: '1190095356',
     still: 'img-maas.png',
   },
   {
     id: 'samsung', title: 'SAMSUNG',
-    client: 'Samsung', kind: 'Social', year: '2024',
+    client: 'Samsung', kind: 'Social', year: '2025',
     vimeoId: '1190095527',
     still: 'img-samsung.jpg',
   },

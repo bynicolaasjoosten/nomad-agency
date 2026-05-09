@@ -95,7 +95,6 @@ const App = () => {
       <WorkGrid tweaks={tweaks} cases={cases} updateCase={updateCase} editMode={editMode} Editable={Editable} onOpenProject={setActiveProject} />
       <Clients visible={tweaks.showClients} />
       <Manifesto editMode={editMode} Editable={Editable} />
-      <StatRow />
       <ContactCTA editMode={editMode} Editable={Editable} />
       <Footer />
 

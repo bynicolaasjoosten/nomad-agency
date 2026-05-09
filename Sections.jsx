@@ -16,7 +16,7 @@ const Manifesto = ({ editMode, Editable }) => {
             onChange={setLine1}
             editMode={editMode}
           />
-          {!editMode && <span style={{ color: 'var(--accent)', fontSize: 'inherit', fontFamily: 'var(--font-display)', fontWeight: 900 }}>.</span>}
+          {!editMode && <span>.</span>}
           <Editable
             tag="p" className="manifesto-line" style={{ marginTop: 24, whiteSpace: 'pre-line' }}
             value={line2}
@@ -121,7 +121,7 @@ const ContactCTA = ({ editMode, Editable }) => {
               onChange={setHeading}
               editMode={editMode}
             />
-            {!editMode && <span style={{ color: 'var(--accent)', fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(40px,6vw,80px)' }}>?</span>}
+            {!editMode && <span style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(40px,6vw,80px)' }}>?</span>}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24, paddingBottom: 12 }}>
             <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />

@@ -88,7 +88,7 @@ const Hero = ({ tweaks, setTweak, scrollTo, editMode, Editable }) => {
           </h1>
         ) : (
           <h1 className="hero-display" dangerouslySetInnerHTML={{
-            __html: tweaks.heroText.replace(/\n/g, '<br/>') + `<span style="color:var(--accent)">.</span>`
+            __html: tweaks.heroText.replace(/\n/g, '<br/>') + '.'
           }} />
         )}
         {tweaks.showHeroBody && (

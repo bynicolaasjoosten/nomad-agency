@@ -16,7 +16,7 @@ const TopNav = ({ onHome, scrollTo, onAbout }) => {
         <div className="nav-links">
           <span onClick={() => scrollTo('work')}>Work</span>
           <span onClick={onAbout}>About</span>
-          <span onClick={() => scrollTo('contact')}>Get in touch →</span>
+          <span onClick={() => scrollTo('contact')}>Get in touch</span>
         </div>
       </div>
     </nav>
