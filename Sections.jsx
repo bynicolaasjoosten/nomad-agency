@@ -113,12 +113,6 @@ const ContactCTA = ({ editMode, Editable }) => {
       <div className="container">
         <div className="section-label"><span className="num">03</span><span>Get in Touch</span></div>
         <div className="cta-grid" style={{ marginTop: 48 }}>
-          <Editable
-            tag="h2" className="cta-head" style={{ whiteSpace: 'pre-line' }}
-            value={heading}
-            onChange={setHeading}
-            editMode={editMode}
-          />
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />
             {!editMode && !sent && (
@@ -161,6 +155,12 @@ const ContactCTA = ({ editMode, Editable }) => {
               Love, Nomad Agency
             </p>
           </div>
+          <Editable
+            tag="h2" className="cta-head" style={{ whiteSpace: 'pre-line' }}
+            value={heading}
+            onChange={setHeading}
+            editMode={editMode}
+          />
         </div>
       </div>
     </section>
