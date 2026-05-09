@@ -93,11 +93,13 @@ a { color: inherit; text-decoration: none; }
 /* ── Hero / Showreel ────────────────────────────────────── */
 
 .hero {
-  position: relative;
+  position: sticky;
+  top: 0;
   height: 100vh;
   min-height: 640px;
   overflow: hidden;
   color: #fff;
+  z-index: 0;
 }
 .hero-media {
   position: absolute; inset: 0;
@@ -230,6 +232,8 @@ a { color: inherit; text-decoration: none; }
 /* ── Work grid ──────────────────────────────────────────── */
 
 #work {
+  position: relative;
+  z-index: 1;
   background: #000;
   --fg: #fff;
   --fg-muted: rgba(255,255,255,0.45);
