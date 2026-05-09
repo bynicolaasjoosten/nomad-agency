@@ -408,8 +408,8 @@ a { color: inherit; text-decoration: none; }
 .footer { padding: 64px 0 48px; background: #000; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; align-items: start; }
 .footer-wm { font-family: var(--font-display); font-weight: 700; font-size: 36px; letter-spacing: -0.02em; line-height: 1; color: #fff; }
-.footer-lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; display: block; }
-.footer-item { font-size: 12px; line-height: 1.9; color: rgba(255,255,255,0.55); cursor: pointer; transition: color 200ms; display: block; text-decoration: none; }
+.footer-lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; margin-bottom: 14px; display: block; }
+.footer-item { font-size: 12px; line-height: 1.9; color: rgba(255,255,255,0.7); cursor: pointer; transition: color 200ms; display: block; text-decoration: none; }
 .footer-item:hover { color: var(--accent); }
 .footer-bottom {
   display: flex; justify-content: space-between; margin-top: 64px;
@@ -464,7 +464,7 @@ a { color: inherit; text-decoration: none; }
 .about-team-role {
   display: block; margin-bottom: 16px;
   font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--accent);
+  color: #fff;
 }
 .about-team-desc { font-size: 16px; line-height: 1.75; color: #fff; max-width: 36ch; }
 .about-quote {
