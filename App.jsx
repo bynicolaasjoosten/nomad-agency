@@ -82,29 +82,7 @@ const App = () => {
     r.style.setProperty('--section-pad', tweaks.sectionPad + 'px');
   }, [tweaks.accent, tweaks.pagePad, tweaks.pageMax, tweaks.sectionPad]);
 
-  React.useEffect(() => {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    gsap.registerPlugin(ScrollTrigger);
 
-    const hero = document.querySelector('.hero');
-    const work = document.getElementById('work');
-    if (!hero || !work) return;
-
-    const pin = ScrollTrigger.create({
-      trigger: hero,
-      start: 'bottom bottom',
-      end: 'bottom top',
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.refresh();
-
-    return () => {
-      pin.kill();
-    };
-  }, []);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
