@@ -2,15 +2,22 @@
 
 const TopNav = ({ onHome, scrollTo, onAbout }) => {
   const [scrolled, setScrolled] = React.useState(false);
+  const [hidden, setHidden] = React.useState(false);
+  const lastY = React.useRef(0);
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener('scroll', onScroll);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      setHidden(y > 80 && y > lastY.current);
+      lastY.current = y;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <nav className={`nav-fixed ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`nav-fixed ${scrolled ? 'scrolled' : ''} ${hidden ? 'hidden' : ''}`}>
       <div className="nav-inner">
         <span className="nav-wm" onClick={onHome}>Nomad Agency</span>
         <div className="nav-links">
