@@ -78,7 +78,7 @@ const Clients = ({ visible }) => {
 };
 
 const ContactCTA = ({ editMode, Editable }) => {
-  const [heading, setHeading] = React.useState('Have something\nworth filming');
+  const [heading, setHeading] = React.useState('Have something worth filming?');
   const [body, setBody]       = React.useState("Send the brief, the budget, and the deadline. We'll come back fast.");
 
   const [name, setName]       = React.useState('');
@@ -121,7 +121,6 @@ const ContactCTA = ({ editMode, Editable }) => {
               onChange={setHeading}
               editMode={editMode}
             />
-            {!editMode && <span style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(40px,6vw,80px)' }}>?</span>}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24, paddingBottom: 12 }}>
             <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />

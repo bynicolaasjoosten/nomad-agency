@@ -70,8 +70,9 @@ a { color: inherit; text-decoration: none; }
 
 .nav-fixed {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-  background: #000;
+  transition: background 350ms ease;
 }
+.nav-fixed.scrolled { background: #000; }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px var(--page-pad, 64px);
@@ -232,7 +233,10 @@ a { color: inherit; text-decoration: none; }
   --fg-muted: rgba(255,255,255,0.45);
   --border: rgba(255,255,255,0.1);
   --bg-elev: #111;
+  padding-top: 48px;
 }
+#work .section-label { color: rgba(255,255,255,0.7); }
+#work .section-label .num { color: #fff; }
 
 #work .work-head {
   display: flex; justify-content: space-between; align-items: flex-end;
@@ -339,15 +343,15 @@ a { color: inherit; text-decoration: none; }
 .clients-track span {
   font-family: var(--font-display); font-weight: 700;
   font-size: 28px; letter-spacing: -0.01em;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.85);
   text-transform: uppercase;
   white-space: nowrap;
   display: flex; align-items: center; gap: 12px;
   transition: color 250ms;
 }
-.clients-track span:hover { color: rgba(255,255,255,0.85); }
+.clients-track span:hover { color: #fff; }
 .clients-sep {
-  color: rgba(255,255,255,0.2) !important;
+  color: rgba(255,255,255,0.3) !important;
   font-size: 24px;
 }
 @keyframes marquee {
@@ -371,9 +375,6 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Contact section ─────────────────────────────────────── */
 
-#contact .btn.primary { background: #000; color: #fff; border-color: #000; }
-#contact .btn.primary::before { background: var(--accent); }
-#contact .btn.primary:hover { color: #fff; }
 
 /* ── Contact form ────────────────────────────────────────── */
 
@@ -382,9 +383,9 @@ a { color: inherit; text-decoration: none; }
   margin-top: 8px;
 }
 .contact-input {
-  background: rgba(0,0,0,0.04);
-  border: 1px solid rgba(0,0,0,0.15);
-  color: #000;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
   font-family: var(--font-body);
   font-size: 14px;
   padding: 14px 16px;
@@ -392,8 +393,8 @@ a { color: inherit; text-decoration: none; }
   transition: border-color 200ms;
   width: 100%;
 }
-.contact-input::placeholder { color: rgba(0,0,0,0.35); }
-.contact-input:focus { border-color: var(--accent); }
+.contact-input::placeholder { color: rgba(255,255,255,0.35); }
+.contact-input:focus { border-color: rgba(255,255,255,0.5); }
 .contact-textarea { min-height: 120px; resize: vertical; }
 
 /* ── Footer ─────────────────────────────────────────────── */
@@ -415,22 +416,22 @@ a { color: inherit; text-decoration: none; }
 
 .about-overlay {
   position: fixed; inset: 0; z-index: 200;
-  background: #fff;
+  background: #000;
   overflow-y: auto;
   animation: fadeIn 280ms cubic-bezier(0.16,1,0.3,1);
 }
 .about-nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px var(--page-pad, 64px);
-  position: sticky; top: 0; background: #fff; z-index: 10;
+  position: sticky; top: 0; background: #000; z-index: 10;
 }
-.about-nav .nav-wm { color: #000; }
+
 .about-close {
   font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(0,0,0,0.4); background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.4); background: none; border: none; cursor: pointer;
   transition: color 200ms; font-family: var(--font-body);
 }
-.about-close:hover { color: #000; }
+.about-close:hover { color: #fff; }
 .about-body-wrap {
   max-width: var(--page-max, 1440px);
   margin: 0 auto;
@@ -442,24 +443,24 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-display); font-weight: 400;
   font-size: clamp(40px, 6vw, 84px);
   line-height: 1.05; letter-spacing: -0.025em;
-  color: #000; margin: 24px 0 0;
+  color: #fff; margin: 24px 0 0;
   text-transform: none;
 }
 .about-intro {
   font-size: 18px; line-height: 1.8; max-width: 52ch;
-  color: rgba(0,0,0,0.5); margin-top: 32px;
+  color: rgba(255,255,255,0.5); margin-top: 32px;
 }
 .about-team {
   display: grid; grid-template-columns: 1fr 1px 1fr; gap: 56px;
   padding-top: 64px;
 }
-.about-team-divider { background: rgba(0,0,0,0.1); }
+.about-team-divider { background: rgba(255,255,255,0.1); }
 .about-team-role {
   display: block; margin-bottom: 16px;
   font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--accent);
 }
-.about-team-desc { font-size: 16px; line-height: 1.75; color: rgba(0,0,0,0.5); max-width: 36ch; }
+.about-team-desc { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.5); max-width: 36ch; }
 .about-quote {
 
   padding: 72px 0; text-align: center;
@@ -467,7 +468,7 @@ a { color: inherit; text-decoration: none; }
 .about-quote-text {
   font-family: var(--font-display); font-weight: 400; font-style: italic;
   font-size: clamp(22px, 3vw, 44px);
-  line-height: 1.35; color: #000; letter-spacing: -0.01em; margin: 0;
+  line-height: 1.35; color: #fff; letter-spacing: -0.01em; margin: 0;
 }
 .about-footer-row {
   display: flex; align-items: center; justify-content: space-between;
@@ -475,13 +476,13 @@ a { color: inherit; text-decoration: none; }
 }
 .about-detail-label {
   display: block;
-  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.4);
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4);
   margin-bottom: 6px;
 }
-.about-detail-value { font-size: 15px; color: #000; }
-.about-overlay .btn.secondary { color: #000; border-color: rgba(0,0,0,0.3); }
-.about-overlay .btn.secondary::before { background: #000; }
-.about-overlay .btn.secondary:hover { color: #fff; }
+.about-detail-value { font-size: 15px; color: #fff; }
+.about-overlay .btn.secondary { color: #fff; border-color: rgba(255,255,255,0.4); }
+.about-overlay .btn.secondary::before { background: #fff; }
+.about-overlay .btn.secondary:hover { color: #000; }
 @media (max-width: 800px) {
   .about-team { grid-template-columns: 1fr; }
   .about-team-divider { display: none; }
