@@ -62,11 +62,11 @@ const StatRow = () => {
 const Clients = ({ visible }) => {
   if (!visible) return null;
   const names = ['PATHÉ', 'SAMSUNG', 'AIR UP', 'TAMRON', 'GODOX'];
-  const doubled = [...names, ...names];
+  const repeated = [...names, ...names, ...names, ...names];
   return (
     <section className="clients">
       <div className="clients-track">
-        {doubled.map((n, i) => (
+        {repeated.map((n, i) => (
           <span key={i}>
             <span className="clients-sep">×</span> {n}
           </span>
