@@ -128,6 +128,7 @@ const App = () => {
 
   return (
     <>
+      <CursorGrid />
       <TopNav onHome={goHome} scrollTo={scrollTo} onAbout={() => setShowAbout(true)} />
       <Hero tweaks={tweaks} setTweak={setTweak} scrollTo={scrollTo} editMode={editMode} Editable={Editable} />
       <WorkGrid tweaks={tweaks} cases={cases} updateCase={updateCase} editMode={editMode} Editable={Editable} onOpenProject={setActiveProject} />
