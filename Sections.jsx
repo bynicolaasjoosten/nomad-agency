@@ -9,7 +9,7 @@ const Manifesto = ({ editMode, Editable }) => {
     <section id="manifesto" className="manifesto">
       <div className="container">
         <div className="section-label"><span className="num">02</span><span>Manifesto</span></div>
-        <div className="manifesto-block" style={{ marginTop: 40 }}>
+        <div className="manifesto-block" style={{ marginTop: 24 }}>
           <Editable
             tag="p" className="manifesto-line" style={{ whiteSpace: 'pre-line' }}
             value={line1 + (editMode ? '' : '')}

@@ -242,7 +242,8 @@ a { color: inherit; text-decoration: none; }
   --fg-muted: rgba(255,255,255,0.45);
   --border: rgba(255,255,255,0.1);
   --bg-elev: #111;
-  padding-top: 48px;
+  padding-top: 80px;
+  padding-bottom: 96px;
 }
 #work .section-label { color: rgba(255,255,255,0.7); }
 #work .section-label .num { color: #fff; }
@@ -345,7 +346,7 @@ a { color: inherit; text-decoration: none; }
 /* ── Clients marquee ────────────────────────────────────── */
 
 .clients {
-  padding: 48px 0;
+  padding: 64px 0;
   background: #000;
   overflow: hidden;
 }
@@ -417,7 +418,7 @@ a { color: inherit; text-decoration: none; }
 .footer-item { font-size: 12px; line-height: 1.9; color: rgba(255,255,255,0.7); cursor: pointer; transition: color 200ms; display: block; text-decoration: none; }
 .footer-item:hover { color: var(--accent); }
 .footer-bottom {
-  display: flex; justify-content: space-between; margin-top: 64px;
+  display: flex; justify-content: space-between; margin-top: 48px;
   padding-top: 24px;
   font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25);
 }
@@ -473,7 +474,6 @@ a { color: inherit; text-decoration: none; }
 }
 .about-team-desc { font-size: 16px; line-height: 1.75; color: #fff; max-width: 36ch; }
 .about-quote {
-
   padding: 72px 0; text-align: center;
 }
 .about-quote-text {

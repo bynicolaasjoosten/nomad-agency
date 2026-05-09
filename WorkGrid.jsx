@@ -60,7 +60,7 @@ const WorkGrid = ({ tweaks, cases, updateCase, editMode, Editable, onOpenProject
       <div className="work-head">
         <div>
           <div className="section-label"><span className="num">01</span><span>Selected Work</span></div>
-          <h2 className="h1" style={{ marginTop: 16, maxWidth: '14ch' }}>
+          <h2 className="h1" style={{ marginTop: 24, maxWidth: '14ch' }}>
             Films we made.<br/>Brands we kept.
           </h2>
         </div>
