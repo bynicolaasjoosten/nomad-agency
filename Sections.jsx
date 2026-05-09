@@ -111,17 +111,15 @@ const ContactCTA = ({ editMode, Editable }) => {
   return (
     <section id="contact" className="section" style={{ paddingTop: 128, paddingBottom: 128 }}>
       <div className="container">
-        <div className="cta-grid">
-          <div>
-            <div className="section-label"><span className="num">03</span><span>Get in Touch</span></div>
-            <Editable
-              tag="h2" className="cta-head" style={{ marginTop: 24, whiteSpace: 'pre-line' }}
-              value={heading}
-              onChange={setHeading}
-              editMode={editMode}
-            />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24, paddingBottom: 12 }}>
+        <div className="section-label"><span className="num">03</span><span>Get in Touch</span></div>
+        <div className="cta-grid" style={{ marginTop: 48 }}>
+          <Editable
+            tag="h2" className="cta-head" style={{ whiteSpace: 'pre-line' }}
+            value={heading}
+            onChange={setHeading}
+            editMode={editMode}
+          />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />
             {!editMode && !sent && (
               <form className="contact-form" onSubmit={handleSubmit}>
