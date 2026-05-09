@@ -433,10 +433,10 @@ a { color: inherit; text-decoration: none; }
 
 .about-close {
   font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.4); background: none; border: none; cursor: pointer;
-  transition: color 200ms; font-family: var(--font-body);
+  color: #fff; background: none; border: none; cursor: pointer;
+  transition: opacity 200ms; font-family: var(--font-body);
 }
-.about-close:hover { color: #fff; }
+.about-close:hover { opacity: 0.6; }
 .about-body-wrap {
   max-width: var(--page-max, 1440px);
   margin: 0 auto;
@@ -453,7 +453,7 @@ a { color: inherit; text-decoration: none; }
 }
 .about-intro {
   font-size: 18px; line-height: 1.8; max-width: 52ch;
-  color: rgba(255,255,255,0.5); margin-top: 32px;
+  color: #fff; margin-top: 32px;
 }
 .about-team {
   display: grid; grid-template-columns: 1fr 1px 1fr; gap: 56px;
@@ -465,7 +465,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--accent);
 }
-.about-team-desc { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.5); max-width: 36ch; }
+.about-team-desc { font-size: 16px; line-height: 1.75; color: #fff; max-width: 36ch; }
 .about-quote {
 
   padding: 72px 0; text-align: center;
@@ -481,7 +481,7 @@ a { color: inherit; text-decoration: none; }
 }
 .about-detail-label {
   display: block;
-  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4);
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #fff;
   margin-bottom: 6px;
 }
 .about-detail-value { font-size: 15px; color: #fff; }
