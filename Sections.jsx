@@ -79,7 +79,7 @@ const Clients = ({ visible }) => {
 
 const ContactCTA = ({ editMode, Editable }) => {
   const [heading, setHeading] = React.useState('Have something worth filming?');
-  const [body, setBody]       = React.useState("Send the brief, the budget, and the deadline. We'll come back fast.");
+  const [body, setBody]       = React.useState("Send the idea! We'll come back fast.");
 
   const [name, setName]       = React.useState('');
   const [email, setEmail]     = React.useState('');
@@ -161,7 +161,7 @@ const ContactCTA = ({ editMode, Editable }) => {
               </div>
             )}
             <p style={{ fontSize: 12, lineHeight: 1.7, color: 'var(--white-70)' }}>
-              NOMAD AGENCY
+              Love, Nomad Agency
             </p>
           </div>
         </div>
