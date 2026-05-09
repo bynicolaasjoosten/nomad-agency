@@ -63,8 +63,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Sections ───────────────────────────────────────────── */
 
-.section { padding: var(--section-pad, 96px) 0; border-bottom: 1px solid var(--border); }
-.section:last-child { border-bottom: none; }
+.section { padding: var(--section-pad, 96px) 0; }
 @media (max-width: 800px) { .section { padding: 64px 0; } }
 
 /* ── Navigation ─────────────────────────────────────────── */
@@ -73,7 +72,7 @@ a { color: inherit; text-decoration: none; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   transition: background 350ms cubic-bezier(0.16,1,0.3,1);
 }
-.nav-fixed.scrolled { background: #fff; border-bottom: 1px solid rgba(0,0,0,0.07); }
+.nav-fixed.scrolled { background: #fff; }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px var(--page-pad, 64px);
@@ -101,7 +100,6 @@ a { color: inherit; text-decoration: none; }
   height: 100vh;
   min-height: 640px;
   overflow: hidden;
-  border-bottom: 1px solid var(--border);
   color: #fff;
 }
 .hero-media {
@@ -336,12 +334,10 @@ a { color: inherit; text-decoration: none; }
 
 .stat-row {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  border: 1px solid rgba(0,0,0,0.1);
 }
 .stat-cell {
   padding: 32px;
   display: flex; flex-direction: column; gap: 8px;
-  border-right: 1px solid rgba(0,0,0,0.1);
 }
 .stat-cell:last-child { border-right: none; }
 .stat-num { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 0.95; letter-spacing: -0.02em; color: #000; }
@@ -350,8 +346,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 800px) {
   .stat-row { grid-template-columns: repeat(2, 1fr); }
   .stat-cell:nth-child(2) { border-right: none; }
-  .stat-cell:nth-child(1),
-  .stat-cell:nth-child(2) { border-bottom: 1px solid rgba(0,0,0,0.1); }
+
 }
 
 /* ── Clients marquee ────────────────────────────────────── */
@@ -359,8 +354,7 @@ a { color: inherit; text-decoration: none; }
 .clients {
   padding: 48px 0;
   background: #fff;
-  border-top: 1px solid rgba(0,0,0,0.07);
-  border-bottom: 1px solid rgba(0,0,0,0.07);
+
   overflow: hidden;
 }
 .clients-track {
@@ -430,7 +424,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Footer ─────────────────────────────────────────────── */
 
-.footer { padding: 64px 0 48px; border-top: 1px solid rgba(255,255,255,0.1); background: #000; }
+.footer { padding: 64px 0 48px; background: #000; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; align-items: start; }
 .footer-wm { font-family: var(--font-display); font-weight: 700; font-size: 36px; letter-spacing: -0.02em; line-height: 1; color: #fff; }
 .footer-lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px; display: block; }
@@ -438,7 +432,7 @@ a { color: inherit; text-decoration: none; }
 .footer-item:hover { color: var(--accent); }
 .footer-bottom {
   display: flex; justify-content: space-between; margin-top: 64px;
-  padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px;
   font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25);
 }
 @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
@@ -455,7 +449,6 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: center; justify-content: space-between;
   padding: 20px var(--page-pad, 64px);
   position: sticky; top: 0; background: #fff; z-index: 10;
-  border-bottom: 1px solid rgba(0,0,0,0.07);
 }
 .about-nav .nav-wm { color: #000; }
 .about-close {
@@ -484,7 +477,7 @@ a { color: inherit; text-decoration: none; }
 }
 .about-team {
   display: grid; grid-template-columns: 1fr 1px 1fr; gap: 56px;
-  border-top: 1px solid rgba(0,0,0,0.1); padding-top: 64px;
+  padding-top: 64px;
 }
 .about-team-divider { background: rgba(0,0,0,0.1); }
 .about-team-role {
@@ -494,8 +487,7 @@ a { color: inherit; text-decoration: none; }
 }
 .about-team-desc { font-size: 16px; line-height: 1.75; color: rgba(0,0,0,0.5); max-width: 36ch; }
 .about-quote {
-  border-top: 1px solid rgba(0,0,0,0.1);
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+
   padding: 72px 0; text-align: center;
 }
 .about-quote-text {
