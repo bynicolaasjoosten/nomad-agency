@@ -1,7 +1,7 @@
 /* Sections.jsx — Manifesto, Stats, Clients, Contact, Footer */
 
 const Manifesto = ({ editMode, Editable }) => {
-  const [line1, setLine1] = React.useState('Most brands\nwant to be seen');
+  const [line1, setLine1] = React.useState('Most brands\nwant to be seen.');
   const [line2, setLine2] = React.useState('We help ours\nbe felt.');
   const [body, setBody]   = React.useState("Seen is an impression. Felt is a memory. We make commercials, brand films, and social content for brands that are done blending in. What holds it all together isn't format or platform — it's a point of view.");
 
@@ -16,7 +16,6 @@ const Manifesto = ({ editMode, Editable }) => {
             onChange={setLine1}
             editMode={editMode}
           />
-          {!editMode && <span>.</span>}
           <Editable
             tag="p" className="manifesto-line" style={{ marginTop: 24, whiteSpace: 'pre-line' }}
             value={line2}
