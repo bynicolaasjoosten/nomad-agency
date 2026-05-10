@@ -85,7 +85,7 @@
 
   function initReveal() {
     var els = document.querySelectorAll(
-      '.work-head, .case-card, .clients, .manifesto-block, .cta-grid, .footer-grid, .footer-bottom'
+      '.work-head, .clients, .manifesto-block, .cta-grid, .footer-grid, .footer-bottom'
     );
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -95,21 +95,31 @@
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { el.classList.add('reveal'); obs.observe(el); });
+  }
 
-    els.forEach(function (el, i) {
-      el.classList.add('reveal');
-      if (el.classList.contains('case-card')) {
-        var siblings = el.parentElement.querySelectorAll('.case-card');
-        var idx = Array.from(siblings).indexOf(el);
-        el.style.transitionDelay = (idx * 0.09) + 's';
-      }
-      obs.observe(el);
-    });
+  function initStackEffect() {
+    var slots = Array.from(document.querySelectorAll('.stack-slot'));
+    if (!slots.length) return;
+    function update() {
+      slots.forEach(function (slot) {
+        var card = slot.querySelector('.case-card');
+        if (!card) return;
+        var rect = slot.getBoundingClientRect();
+        var progress = Math.max(0, Math.min(1, -rect.top / (slot.offsetHeight * 0.6)));
+        var scale = (1 - progress * 0.06).toFixed(3);
+        var bright = (1 - progress * 0.28).toFixed(3);
+        card.style.transform = 'scale(' + scale + ')';
+        card.style.filter = 'brightness(' + bright + ')';
+      });
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
   }
 
   requestAnimationFrame(function () {
     setTimeout(function () { loader.classList.add('show'); }, 80);
-    setTimeout(initReveal, 500);
+    setTimeout(function () { initReveal(); initStackEffect(); }, 500);
     setTimeout(function () {
       loader.classList.add('out');
       document.body.style.overflow = '';

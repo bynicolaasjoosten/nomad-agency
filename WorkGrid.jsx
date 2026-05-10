@@ -52,10 +52,7 @@ const CaseCard = ({ item, index, editMode, Editable, onUpdate, onOpen }) => (
 );
 
 const WorkGrid = ({ tweaks, cases, updateCase, editMode, Editable, onOpenProject }) => (
-  <section id="work" className="section" style={{
-    '--grid-cols': tweaks.gridCols,
-    '--grid-gap': tweaks.gridGap + 'px',
-  }}>
+  <section id="work" className="section">
     <div className="container">
       <div className="work-head">
         <div>
@@ -65,11 +62,13 @@ const WorkGrid = ({ tweaks, cases, updateCase, editMode, Editable, onOpenProject
           </h2>
         </div>
       </div>
-      <div className="work-grid">
+      <div className="work-stack">
         {cases.map((c, i) => (
-          <CaseCard key={c.id} item={c} index={i}
-            editMode={editMode} Editable={Editable} onUpdate={updateCase}
-            onOpen={() => onOpenProject({ ...c, index: i })} />
+          <div key={c.id} className="stack-slot">
+            <CaseCard item={c} index={i}
+              editMode={editMode} Editable={Editable} onUpdate={updateCase}
+              onOpen={() => onOpenProject({ ...c, index: i })} />
+          </div>
         ))}
       </div>
     </div>

@@ -15,7 +15,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "heroAlign": "flex-end",
   "grain": 0.06,
   "reelDuration": 24,
-  "accent": "#550022",
+  "accent": "#ffffff",
   "gridCols": 2,
   "gridGap": 16,
   "showClients": true,
