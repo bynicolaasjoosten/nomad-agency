@@ -104,6 +104,24 @@
     });
   }
 
+  function initVelocityScale() {
+    var lastY = window.scrollY;
+    var velocity = 0;
+    var currentScale = 1;
+    function tick() {
+      var y = window.scrollY;
+      velocity = velocity * 0.78 + Math.abs(y - lastY) * 0.22;
+      lastY = y;
+      var targetScale = Math.max(0.95, 1 - velocity * 0.0015);
+      currentScale = currentScale + (targetScale - currentScale) * 0.1;
+      var s = currentScale.toFixed(4);
+      var cards = document.querySelectorAll('.case-img');
+      cards.forEach(function(card) { card.style.transform = 'scale(' + s + ')'; });
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
   requestAnimationFrame(function () {
     setTimeout(function () { loader.classList.add('show'); }, 80);
     setTimeout(initReveal, 500);
@@ -111,7 +129,7 @@
       loader.classList.add('out');
       document.body.style.overflow = '';
     }, 1700);
-    setTimeout(function () { loader.remove(); }, 2900);
+    setTimeout(function () { loader.remove(); initVelocityScale(); }, 2900);
   });
 })();
 </script>
