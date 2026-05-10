@@ -98,7 +98,7 @@ const App = () => {
       <Clients visible={tweaks.showClients} />
       <Manifesto editMode={editMode} Editable={Editable} />
       <ContactCTA editMode={editMode} Editable={Editable} />
-      <Footer />
+      <Footer onAbout={() => setShowAbout(true)} />
 
       {activeProject && (
         <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />

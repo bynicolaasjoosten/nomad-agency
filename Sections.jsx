@@ -168,7 +168,7 @@ const ContactCTA = ({ editMode, Editable }) => {
 
 };
 
-const Footer = () => (
+const Footer = ({ onAbout }) => (
   <footer className="footer">
     <div className="container">
       <div className="footer-grid">
@@ -181,7 +181,7 @@ const Footer = () => (
         <div>
           <span className="footer-lbl">Studio</span>
           <div className="footer-item">Work</div>
-          <div className="footer-item">Team</div>
+          <div className="footer-item" style={{ cursor: 'pointer' }} onClick={onAbout}>Team</div>
           <div className="footer-item">Contact</div>
         </div>
         <div>
@@ -192,9 +192,9 @@ const Footer = () => (
         </div>
         <div>
           <span className="footer-lbl">Connect</span>
-          <a href="https://www.instagram.com/nomadagencynl/" target="_blank" rel="noopener noreferrer" className="footer-item">Instagram <span style={{ color: 'var(--accent)' }}>↗</span></a>
-          <a href="https://www.tiktok.com/@nomadagencynl?_r=1&_t=ZG-96Aqmb0rZ7g" target="_blank" rel="noopener noreferrer" className="footer-item">TikTok <span style={{ color: 'var(--accent)' }}>↗</span></a>
-          <div className="footer-item">LinkedIn <span style={{ color: 'var(--accent)' }}>↗</span></div>
+          <a href="https://www.instagram.com/nomadagencynl/" target="_blank" rel="noopener noreferrer" className="footer-item">Instagram</a>
+          <a href="https://www.tiktok.com/@nomadagencynl?_r=1&_t=ZG-96Aqmb0rZ7g" target="_blank" rel="noopener noreferrer" className="footer-item">TikTok</a>
+          <div className="footer-item">LinkedIn</div>
           <div className="footer-item">nomadagencynl@gmail.com</div>
         </div>
       </div>
