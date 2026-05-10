@@ -30,6 +30,9 @@ const DEFAULT_CASES = [
 const CaseCard = ({ item, editMode, Editable, onUpdate, onOpen }) => (
   <div className="case-card" onClick={!editMode ? onOpen : undefined}>
     <div className="case-img" style={{ backgroundImage: `url(${item.still})` }} />
+    <div className="case-img-title">
+      <Editable value={item.title} onChange={v => onUpdate(item.id, 'title', v)} editMode={editMode} />
+    </div>
     <div className="case-img-date">
       <Editable value={item.year} onChange={v => onUpdate(item.id, 'year', v)} editMode={editMode} />
     </div>
