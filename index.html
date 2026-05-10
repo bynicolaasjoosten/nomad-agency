@@ -57,6 +57,10 @@
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
+<div id="loader">
+  <span class="loader-word">NOMAD</span>
+  <span class="loader-sub">Creative &amp; Film Studio</span>
+</div>
 <div id="root"></div>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
@@ -72,5 +76,47 @@
 <script type="text/babel" src="WorkGrid.jsx"></script>
 <script type="text/babel" src="Sections.jsx"></script>
 <script type="text/babel" src="App.jsx"></script>
+
+<script>
+(function () {
+  var loader = document.getElementById('loader');
+  if (!loader) return;
+  document.body.style.overflow = 'hidden';
+
+  function initReveal() {
+    var els = document.querySelectorAll(
+      '.work-head, .case-card, .clients, .manifesto-block, .cta-grid, .footer-grid, .footer-bottom'
+    );
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    els.forEach(function (el, i) {
+      el.classList.add('reveal');
+      if (el.classList.contains('case-card')) {
+        var siblings = el.parentElement.querySelectorAll('.case-card');
+        var idx = Array.from(siblings).indexOf(el);
+        el.style.transitionDelay = (idx * 0.09) + 's';
+      }
+      obs.observe(el);
+    });
+  }
+
+  requestAnimationFrame(function () {
+    setTimeout(function () { loader.classList.add('show'); }, 80);
+    setTimeout(initReveal, 500);
+    setTimeout(function () {
+      loader.classList.add('out');
+      document.body.style.overflow = '';
+    }, 1700);
+    setTimeout(function () { loader.remove(); }, 2900);
+  });
+})();
+</script>
 </body>
 </html>

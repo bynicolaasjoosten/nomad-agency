@@ -8,6 +8,39 @@ img { max-width: 100%; display: block; }
 button { font: inherit; border: 0; background: none; color: inherit; }
 a { color: inherit; text-decoration: none; }
 
+/* ── Intro Loader ───────────────────────────────────────── */
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #000;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 24px;
+  transition: transform 1.1s cubic-bezier(0.76, 0, 0.24, 1);
+}
+#loader.out { transform: translateY(-100%); }
+.loader-word {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 9vw, 128px);
+  font-weight: 900; letter-spacing: -0.02em; color: #fff;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.loader-sub {
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.7s ease 0.15s, transform 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s;
+}
+#loader.show .loader-word { opacity: 1; transform: none; }
+#loader.show .loader-sub  { opacity: 1; transform: none; }
+
+/* ── Scroll Reveal ──────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.revealed { opacity: 1; transform: none; }
+
 /* ── Layout ─────────────────────────────────────────────── */
 
 .container {
@@ -269,7 +302,7 @@ a { color: inherit; text-decoration: none; }
 
 .case-card {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   background: var(--bg-elev);
   cursor: pointer;
   overflow: hidden;
