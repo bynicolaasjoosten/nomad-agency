@@ -275,8 +275,8 @@ a { color: inherit; text-decoration: none; }
   --fg-muted: rgba(255,255,255,0.45);
   --border: rgba(255,255,255,0.1);
   --bg-elev: #111;
-  padding-top: 80px;
-  padding-bottom: 96px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 #work .section-label { color: rgba(255,255,255,0.7); }
 #work .section-label .num { color: #fff; }
@@ -287,63 +287,57 @@ a { color: inherit; text-decoration: none; }
 
 #work .work-head {
   display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 56px; gap: 32px; flex-wrap: wrap;
+  padding: 80px 0 48px; gap: 32px; flex-wrap: wrap;
 }
-/* ── Work list (ACE-style) ──────────────────────────────── */
-#work .work-list {
+
+/* ── Work stack (sticky full-bleed) ─────────────────────── */
+.work-stack {
   display: flex;
   flex-direction: column;
 }
+.stack-slot { height: 100vh; }
 
 /* ── Case cards ─────────────────────────────────────────── */
-
 .case-card {
-  border-top: 1px solid rgba(255,255,255,0.1);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
   cursor: pointer;
-  padding-top: 20px;
+  overflow: hidden;
 }
-.case-card:last-child { border-bottom: 1px solid rgba(255,255,255,0.1); }
+.stack-slot:nth-child(1) .case-card { z-index: 1; }
+.stack-slot:nth-child(2) .case-card { z-index: 2; }
+.stack-slot:nth-child(3) .case-card { z-index: 3; }
+.stack-slot:nth-child(4) .case-card { z-index: 4; }
 
-.case-header {
-  display: flex; align-items: center; gap: 16px;
-  margin-bottom: 18px;
-  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-}
-.case-header .case-num { color: rgba(255,255,255,0.28); font-weight: 300; }
-.case-header .case-client { flex: 1; color: rgba(255,255,255,0.9); font-weight: 500; }
-.case-header .case-meta-right {
-  display: flex; align-items: center; gap: 8px;
-  color: rgba(255,255,255,0.42);
-}
-.case-header .case-arrow {
-  color: rgba(255,255,255,0.65);
-  transition: transform 400ms cubic-bezier(0.16,1,0.3,1);
-}
-.case-card:hover .case-arrow { transform: translateX(5px); }
-
-.case-img-wrap {
-  position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden;
-}
 .case-img {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
-  transition: transform 900ms cubic-bezier(0.16,1,0.3,1);
+  transition: transform 1200ms cubic-bezier(0.16,1,0.3,1);
 }
-.case-card:hover .case-img { transform: scale(1.035); }
+.case-card:hover .case-img { transform: scale(1.025); }
 
-.case-overlay-title {
+.case-card::after {
+  content: '';
   position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 80px 32px 28px;
-  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
+  height: 35%; pointer-events: none; z-index: 1;
+  background: linear-gradient(to top, rgba(0,0,0,0.28) 0%, transparent 100%);
 }
-.case-title {
-  font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(32px, 3.5vw, 60px);
-  letter-spacing: -0.02em; text-transform: uppercase;
-  color: #fff; line-height: 1;
+
+.case-img-date {
+  position: absolute; bottom: 32px; right: 40px; z-index: 2;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); font-weight: 300;
 }
 
 .case-video-wrap { position: absolute; inset: 0; overflow: hidden; background: #000; }
+
+@media (max-width: 800px) {
+  .stack-slot { height: auto; }
+  .case-card { position: relative; top: 0; height: auto; aspect-ratio: 16/9; }
+}
+
 
 /* ── Manifesto ──────────────────────────────────────────── */
 
