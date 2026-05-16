@@ -75,7 +75,7 @@ const Hero = ({ tweaks, setTweak, scrollTo, editMode, Editable }) => {
           <span className="rule" />
           <Editable
             tag="span" className="eyebrow"
-            value={tweaks.heroEyebrow || 'Creative & Film Studio · AMS × UTR'}
+            value={tweaks.heroEyebrow || 'Creative & Film Agency · AMS × UTR'}
             onChange={v => setTweak('heroEyebrow', v)}
             editMode={editMode}
           />

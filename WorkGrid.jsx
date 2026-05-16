@@ -14,12 +14,6 @@ const DEFAULT_CASES = [
     still: 'img-pathe.jpg',
   },
   {
-    id: 'maas', title: 'MAAS',
-    client: 'MAAS', kind: 'Social', year: '2026',
-    vimeoId: '1190095356',
-    still: 'img-maas.png',
-  },
-  {
     id: 'samsung', title: 'SAMSUNG',
     client: 'Samsung', kind: 'Social', year: '2025',
     vimeoId: '1190095527',

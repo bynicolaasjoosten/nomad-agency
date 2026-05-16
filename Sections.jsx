@@ -175,11 +175,11 @@ const Footer = ({ onAbout }) => (
         <div>
           <span className="footer-wm">Nomad Agency</span>
           <p style={{ fontSize: 12, lineHeight: 1.8, color: 'var(--white-70)', marginTop: 14, maxWidth: '24ch' }}>
-            Creative &amp; film studio<br/>Amsterdam × Utrecht
+            Creative &amp; film agency<br/>Amsterdam × Utrecht
           </p>
         </div>
         <div>
-          <span className="footer-lbl">Studio</span>
+          <span className="footer-lbl">Agency</span>
           <div className="footer-item">Work</div>
           <div className="footer-item" style={{ cursor: 'pointer' }} onClick={onAbout}>Team</div>
           <div className="footer-item">Contact</div>

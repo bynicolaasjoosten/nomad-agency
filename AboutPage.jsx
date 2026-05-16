@@ -24,10 +24,10 @@ const AboutPage = ({ onClose }) => {
             <span className="num">00</span><span>About</span>
           </div>
           <h1 className="about-heading">
-            A two-person studio<br/>built on intent.
+            A two-person agency<br/>built on intent.
           </h1>
           <p className="about-intro">
-            Nomad Agency is a creative studio based in Amsterdam × Utrecht. We work at the intersection
+            Nomad Agency is a creative agency based in Amsterdam × Utrecht. We work at the intersection
             of film, brand, and social — making content that earns attention rather
             than interrupting it.
           </p>
