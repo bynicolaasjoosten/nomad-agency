@@ -21,7 +21,7 @@ const TopNav = ({ onHome, scrollTo, onAbout, onWork, onPhotography }) => {
       <div className="nav-inner">
         <span className="nav-wm" onClick={onHome}>Nomad Agency</span>
         <div className="nav-links">
-          <span onClick={onWork}>Work</span>
+          <span onClick={onWork}>Films</span>
           <span onClick={onPhotography}>Photography</span>
           <span onClick={onAbout}>About</span>
           <span onClick={() => scrollTo('contact')}>Get in touch</span>
