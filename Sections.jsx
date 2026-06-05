@@ -200,6 +200,7 @@ const Footer = ({ onAbout }) => (
       </div>
       <div className="footer-bottom">
         <span>© 2026 NOMAD Agency</span>
+        <span>KVK 42076163</span>
         <span>Made between AMS &amp; UTR</span>
       </div>
     </div>
