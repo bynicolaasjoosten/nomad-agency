@@ -1,6 +1,6 @@
 /* TopNav.jsx */
 
-const TopNav = ({ onHome, scrollTo, onAbout }) => {
+const TopNav = ({ onHome, scrollTo, onAbout, onWork }) => {
   const [scrolled, setScrolled] = React.useState(false);
   const [hidden, setHidden] = React.useState(false);
   const lastY = React.useRef(0);
@@ -21,7 +21,7 @@ const TopNav = ({ onHome, scrollTo, onAbout }) => {
       <div className="nav-inner">
         <span className="nav-wm" onClick={onHome}>Nomad Agency</span>
         <div className="nav-links">
-          <span onClick={() => scrollTo('work')}>Work</span>
+          <span onClick={onWork}>Work</span>
           <span onClick={onAbout}>About</span>
           <span onClick={() => scrollTo('contact')}>Get in touch</span>
         </div>

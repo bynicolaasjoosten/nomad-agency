@@ -56,6 +56,7 @@ const App = () => {
   const [cases, setCases]             = React.useState(DEFAULT_CASES);
   const [activeProject, setActiveProject] = React.useState(null);
   const [showAbout, setShowAbout]         = React.useState(false);
+  const [showWork, setShowWork]           = React.useState(false);
 
   const updateCase = (id, field, val) =>
     setCases(prev => prev.map(c => c.id === id ? { ...c, [field]: val } : c));
@@ -92,7 +93,7 @@ const App = () => {
 
   return (
     <>
-      <TopNav onHome={goHome} scrollTo={scrollTo} onAbout={() => setShowAbout(true)} />
+      <TopNav onHome={goHome} scrollTo={scrollTo} onAbout={() => setShowAbout(true)} onWork={() => setShowWork(true)} />
       <Hero tweaks={tweaks} setTweak={setTweak} scrollTo={scrollTo} editMode={editMode} Editable={Editable} />
       <WorkGrid tweaks={tweaks} cases={cases} updateCase={updateCase} editMode={editMode} Editable={Editable} onOpenProject={setActiveProject} />
       <Clients visible={tweaks.showClients} />
@@ -106,6 +107,14 @@ const App = () => {
 
       {showAbout && (
         <AboutPage onClose={() => setShowAbout(false)} />
+      )}
+
+      {showWork && (
+        <WorkPage
+          cases={cases}
+          onClose={() => setShowWork(false)}
+          onOpenProject={(c) => { setShowWork(false); setActiveProject(c); }}
+        />
       )}
 
       {devMode && (
