@@ -95,7 +95,7 @@ const App = () => {
 
   return (
     <>
-      <TopNav onHome={goHome} scrollTo={scrollTo} onAbout={() => setPage('about')} onWork={() => setPage('work')} />
+      <TopNav onHome={goHome} scrollTo={scrollTo} onAbout={() => setPage('about')} onWork={() => setPage('work')} onPhotography={() => setPage('photography')} />
 
       {page === 'home' && <>
         <Hero tweaks={tweaks} setTweak={setTweak} scrollTo={scrollTo} editMode={editMode} Editable={Editable} />
@@ -116,6 +116,10 @@ const App = () => {
 
       {page === 'about' && (
         <AboutPage onBack={() => setPage('home')} />
+      )}
+
+      {page === 'photography' && (
+        <PhotographyPage onBack={() => setPage('home')} />
       )}
 
       {activeProject && (
