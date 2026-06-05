@@ -55,8 +55,7 @@ const App = () => {
   const [devMode, setDevMode]         = React.useState(false);
   const [cases, setCases]             = React.useState(DEFAULT_CASES);
   const [activeProject, setActiveProject] = React.useState(null);
-  const [showAbout, setShowAbout]         = React.useState(false);
-  const [showWork, setShowWork]           = React.useState(false);
+  const [page, setPage] = React.useState('home'); // 'home' | 'work' | 'about'
 
   const updateCase = (id, field, val) =>
     setCases(prev => prev.map(c => c.id === id ? { ...c, [field]: val } : c));
@@ -86,35 +85,41 @@ const App = () => {
 
 
   const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
+    setPage('home');
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
+    }, 50);
   };
-  const goHome = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const goHome = () => { setPage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
   return (
     <>
-      <TopNav onHome={goHome} scrollTo={scrollTo} onAbout={() => setShowAbout(true)} onWork={() => setShowWork(true)} />
-      <Hero tweaks={tweaks} setTweak={setTweak} scrollTo={scrollTo} editMode={editMode} Editable={Editable} />
-      <WorkGrid tweaks={tweaks} cases={cases} updateCase={updateCase} editMode={editMode} Editable={Editable} onOpenProject={setActiveProject} />
-      <Clients visible={tweaks.showClients} />
-      <Manifesto editMode={editMode} Editable={Editable} />
-      <ContactCTA editMode={editMode} Editable={Editable} />
-      <Footer onAbout={() => setShowAbout(true)} />
+      <TopNav onHome={goHome} scrollTo={scrollTo} onAbout={() => setPage('about')} onWork={() => setPage('work')} />
+
+      {page === 'home' && <>
+        <Hero tweaks={tweaks} setTweak={setTweak} scrollTo={scrollTo} editMode={editMode} Editable={Editable} />
+        <WorkGrid tweaks={tweaks} cases={cases} updateCase={updateCase} editMode={editMode} Editable={Editable} onOpenProject={setActiveProject} />
+        <Clients visible={tweaks.showClients} />
+        <Manifesto editMode={editMode} Editable={Editable} />
+        <ContactCTA editMode={editMode} Editable={Editable} />
+        <Footer onAbout={() => setPage('about')} />
+      </>}
+
+      {page === 'work' && (
+        <WorkPage
+          cases={cases}
+          onBack={() => setPage('home')}
+          onOpenProject={(c) => setActiveProject(c)}
+        />
+      )}
+
+      {page === 'about' && (
+        <AboutPage onBack={() => setPage('home')} />
+      )}
 
       {activeProject && (
         <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
-      )}
-
-      {showAbout && (
-        <AboutPage onClose={() => setShowAbout(false)} />
-      )}
-
-      {showWork && (
-        <WorkPage
-          cases={cases}
-          onClose={() => setShowWork(false)}
-          onOpenProject={(c) => { setShowWork(false); setActiveProject(c); }}
-        />
       )}
 
       {devMode && (

@@ -1,22 +1,13 @@
-/* AboutPage.jsx — full-screen about overlay */
+/* AboutPage.jsx */
 
-const AboutPage = ({ onClose }) => {
+const AboutPage = ({ onBack }) => {
   React.useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    document.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-    };
-  }, [onClose]);
+    window.scrollTo({ top: 0 });
+  }, []);
 
   return (
-    <div className="about-overlay">
-      <div className="about-nav">
-        <span className="nav-wm" onClick={onClose}>Nomad Agency</span>
-        <button className="about-close" onClick={onClose}>Close ×</button>
-      </div>
+    <div className="about-page">
+      <div className="about-nav" style={{ display: 'none' }} />
 
       <div className="about-body-wrap">
         <div className="about-hero">
@@ -71,7 +62,7 @@ const AboutPage = ({ onClose }) => {
             <span className="about-detail-label">Disciplines</span>
             <span className="about-detail-value">Film · Brand · Social</span>
           </div>
-          <button className="btn secondary" onClick={onClose}>See our work →</button>
+          <button className="btn secondary" onClick={onBack}>See our work →</button>
         </div>
       </div>
     </div>
