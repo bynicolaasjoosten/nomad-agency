@@ -103,7 +103,7 @@ const App = () => {
         <Clients visible={tweaks.showClients} />
         <Manifesto editMode={editMode} Editable={Editable} />
         <ContactCTA editMode={editMode} Editable={Editable} />
-        <Footer onAbout={() => setPage('about')} />
+        <Footer onAbout={() => setPage('about')} onWork={() => setPage('work-landing')} onContact={() => scrollTo('contact')} />
       </>}
 
       {page === 'work' && (
@@ -120,6 +120,10 @@ const App = () => {
 
       {page === 'photography' && (
         <PhotographyPage onBack={() => setPage('home')} />
+      )}
+
+      {page === 'work-landing' && (
+        <WorkLanding onFilms={() => setPage('work')} onPhotography={() => setPage('photography')} />
       )}
 
       {activeProject && (

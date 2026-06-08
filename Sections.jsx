@@ -168,7 +168,7 @@ const ContactCTA = ({ editMode, Editable }) => {
 
 };
 
-const Footer = ({ onAbout }) => (
+const Footer = ({ onAbout, onWork, onContact }) => (
   <footer className="footer">
     <div className="container">
       <div className="footer-grid">
@@ -180,9 +180,9 @@ const Footer = ({ onAbout }) => (
         </div>
         <div>
           <span className="footer-lbl">Agency</span>
-          <div className="footer-item">Work</div>
+          <div className="footer-item" style={{ cursor: 'pointer' }} onClick={onWork}>Work</div>
           <div className="footer-item" style={{ cursor: 'pointer' }} onClick={onAbout}>Team</div>
-          <div className="footer-item">Contact</div>
+          <div className="footer-item" style={{ cursor: 'pointer' }} onClick={onContact}>Contact</div>
         </div>
         <div>
           <span className="footer-lbl">Output</span>

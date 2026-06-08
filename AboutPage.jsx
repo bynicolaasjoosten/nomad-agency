@@ -12,7 +12,7 @@ const AboutPage = ({ onBack }) => {
       <div className="about-body-wrap">
         <div className="about-hero">
           <div className="section-label" style={{ color: 'rgba(0,0,0,0.4)' }}>
-            <span className="num">00</span><span>About</span>
+            <span className="num">04</span><span>About</span>
           </div>
           <h1 className="about-heading">
             A two-person agency<br/>built on intent.
