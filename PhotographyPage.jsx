@@ -18,7 +18,7 @@ const PhotographyPage = ({ onBack, onContact }) => {
           <div className="section-label">
             <span className="num">02</span><span>Photography</span>
           </div>
-          <h1 className="h1" style={{ marginTop: 24 }}>Stills we made.</h1>
+          <h1 className="h1" style={{ marginTop: 24 }}>Photography.</h1>
         </div>
 
         {photos.length === 0 ? (
