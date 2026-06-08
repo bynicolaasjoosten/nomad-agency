@@ -111,6 +111,7 @@ const App = () => {
           cases={cases}
           onBack={() => setPage('home')}
           onOpenProject={(c) => setActiveProject(c)}
+          onContact={() => { setPage('home'); setTimeout(() => scrollTo('contact'), 50); }}
         />
       )}
 
@@ -119,7 +120,10 @@ const App = () => {
       )}
 
       {page === 'photography' && (
-        <PhotographyPage onBack={() => setPage('home')} />
+        <PhotographyPage
+          onBack={() => setPage('home')}
+          onContact={() => { setPage('home'); setTimeout(() => scrollTo('contact'), 50); }}
+        />
       )}
 
       {page === 'work-landing' && (

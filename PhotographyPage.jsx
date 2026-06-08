@@ -4,7 +4,7 @@ const DEFAULT_PHOTOS = [
   // { id: 'photo-1', src: 'img-example.jpg', title: 'Title', year: '2026' },
 ];
 
-const PhotographyPage = ({ onBack }) => {
+const PhotographyPage = ({ onBack, onContact }) => {
   const [photos] = React.useState(DEFAULT_PHOTOS);
 
   React.useEffect(() => {
@@ -39,6 +39,14 @@ const PhotographyPage = ({ onBack }) => {
           </div>
         )}
       </div>
+
+        <div className="page-cta">
+          <h2 className="h1">Need stills<br/>that speak?</h2>
+          <p className="body-lg muted" style={{ marginTop: 20 }}>Tell us what you have in mind.</p>
+          <button className="btn primary" style={{ marginTop: 36 }} onClick={onContact}>
+            <span>Get in touch →</span>
+          </button>
+        </div>
     </div>
   );
 };

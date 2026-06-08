@@ -1,6 +1,6 @@
 /* WorkPage.jsx — Dedicated work overview page, 3-column 4:3 grid */
 
-const WorkPage = ({ cases, onBack, onOpenProject }) => {
+const WorkPage = ({ cases, onBack, onOpenProject, onContact }) => {
   React.useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
@@ -32,6 +32,14 @@ const WorkPage = ({ cases, onBack, onOpenProject }) => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="page-cta">
+          <h2 className="h1">Have something<br/>worth filming?</h2>
+          <p className="body-lg muted" style={{ marginTop: 20 }}>Send the idea. We move quickly.</p>
+          <button className="btn primary" style={{ marginTop: 36 }} onClick={onContact}>
+            <span>Get in touch →</span>
+          </button>
         </div>
     </div>
   );
