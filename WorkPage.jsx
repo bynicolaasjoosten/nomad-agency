@@ -35,9 +35,7 @@ const WorkPage = ({ cases, onBack, onOpenProject, onContact }) => {
         </div>
 
         <div className="page-cta">
-          <h2 className="h1">Have something<br/>worth filming?</h2>
-          <p className="body-lg muted" style={{ marginTop: 20 }}>Send the idea. We move quickly.</p>
-          <button className="btn primary" style={{ marginTop: 36 }} onClick={onContact}>
+          <button className="btn primary" onClick={onContact}>
             <span>Get in touch →</span>
           </button>
         </div>

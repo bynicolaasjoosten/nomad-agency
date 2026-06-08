@@ -41,9 +41,7 @@ const PhotographyPage = ({ onBack, onContact }) => {
       </div>
 
         <div className="page-cta">
-          <h2 className="h1">Need stills<br/>that speak?</h2>
-          <p className="body-lg muted" style={{ marginTop: 20 }}>Tell us what you have in mind.</p>
-          <button className="btn primary" style={{ marginTop: 36 }} onClick={onContact}>
+          <button className="btn primary" onClick={onContact}>
             <span>Get in touch →</span>
           </button>
         </div>
