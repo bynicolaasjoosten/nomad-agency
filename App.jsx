@@ -98,7 +98,7 @@ const App = () => {
       <TopNav onHome={goHome} scrollTo={scrollTo} onAbout={() => setPage('about')} onWork={() => setPage('work')} onPhotography={() => setPage('photography')} />
 
       {page === 'home' && <>
-        <Hero tweaks={tweaks} setTweak={setTweak} scrollTo={scrollTo} editMode={editMode} Editable={Editable} />
+        <Hero tweaks={tweaks} setTweak={setTweak} scrollTo={scrollTo} editMode={editMode} Editable={Editable} onWorkLanding={() => setPage('work-landing')} />
         <WorkGrid tweaks={tweaks} cases={cases} updateCase={updateCase} editMode={editMode} Editable={Editable} onOpenProject={setActiveProject} />
         <Clients visible={tweaks.showClients} />
         <Manifesto editMode={editMode} Editable={Editable} />

@@ -6,7 +6,7 @@ const getVimeoId = (url) => {
   return m ? m[1] : null;
 };
 
-const Hero = ({ tweaks, setTweak, scrollTo, editMode, Editable }) => {
+const Hero = ({ tweaks, setTweak, scrollTo, editMode, Editable, onWorkLanding }) => {
   const videoRef = React.useRef(null);
   const [muted, setMuted] = React.useState(true);
 
@@ -101,7 +101,7 @@ const Hero = ({ tweaks, setTweak, scrollTo, editMode, Editable }) => {
         )}
         {tweaks.showHeroCtas && (
           <div className="hero-cta-row">
-            <button className="btn primary" onClick={() => scrollTo('work')}><span>View Work →</span></button>
+            <button className="btn primary" onClick={onWorkLanding}><span>View Work →</span></button>
             <button className="btn secondary" onClick={() => scrollTo('contact')}><span>Get In Touch</span></button>
           </div>
         )}
