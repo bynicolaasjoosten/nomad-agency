@@ -124,7 +124,7 @@ const ContactCTA = ({ editMode, Editable }) => {
           {/* Starter */}
           <div className="pricing-card">
             <p className="pricing-tier">STARTER</p>
-            <p className="pricing-price">€700</p>
+            <p className="pricing-price">€799</p>
             <p className="pricing-per">per month</p>
             <p className="pricing-desc">1 commercial · great to get started</p>
             <div className="pricing-divider" />
@@ -141,7 +141,7 @@ const ContactCTA = ({ editMode, Editable }) => {
           <div className="pricing-card pricing-card--featured">
             <span className="pricing-badge">Most chosen</span>
             <p className="pricing-tier">GROWTH</p>
-            <p className="pricing-price">€1,500</p>
+            <p className="pricing-price">€1,699</p>
             <p className="pricing-per">per month</p>
             <p className="pricing-desc">2 productions · for growing brands</p>
             <div className="pricing-divider" />
@@ -157,7 +157,7 @@ const ContactCTA = ({ editMode, Editable }) => {
           {/* Partner */}
           <div className="pricing-card">
             <p className="pricing-tier">PARTNER</p>
-            <p className="pricing-price">€3,500</p>
+            <p className="pricing-price">€3,499</p>
             <p className="pricing-per">per month</p>
             <p className="pricing-desc">4 productions · for serious brands</p>
             <div className="pricing-divider" />
