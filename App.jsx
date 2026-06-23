@@ -55,7 +55,8 @@ const App = () => {
   const [devMode, setDevMode]         = React.useState(false);
   const [cases, setCases]             = React.useState(DEFAULT_CASES);
   const [activeProject, setActiveProject] = React.useState(null);
-  const [page, setPage] = React.useState('home'); // 'home' | 'work' | 'about'
+  const [page, setPage] = React.useState('home'); // 'home' | 'work' | 'about' | 'plan'
+  const [activePlan, setActivePlan] = React.useState('starter');
 
   const updateCase = (id, field, val) =>
     setCases(prev => prev.map(c => c.id === id ? { ...c, [field]: val } : c));
@@ -102,7 +103,7 @@ const App = () => {
         <WorkGrid tweaks={tweaks} cases={cases} updateCase={updateCase} editMode={editMode} Editable={Editable} onOpenProject={setActiveProject} />
         <Clients visible={tweaks.showClients} />
         <Manifesto editMode={editMode} Editable={Editable} />
-        <ContactCTA editMode={editMode} Editable={Editable} />
+        <ContactCTA editMode={editMode} Editable={Editable} onPlan={(plan) => { setActivePlan(plan); setPage('plan'); }} />
         <Footer onAbout={() => setPage('about')} onWork={() => setPage('work-landing')} onContact={() => scrollTo('contact')} />
       </>}
 
@@ -128,6 +129,13 @@ const App = () => {
 
       {page === 'work-landing' && (
         <WorkLanding onFilms={() => setPage('work')} onPhotography={() => setPage('photography')} />
+      )}
+
+      {page === 'plan' && (
+        <PlanPage
+          initialPlan={activePlan}
+          onContact={() => { setPage('home'); setTimeout(() => scrollTo('contact'), 50); }}
+        />
       )}
 
       {activeProject && (

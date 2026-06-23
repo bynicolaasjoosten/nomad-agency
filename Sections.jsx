@@ -76,7 +76,7 @@ const Clients = ({ visible }) => {
   );
 };
 
-const ContactCTA = ({ editMode, Editable }) => {
+const ContactCTA = ({ editMode, Editable, onPlan }) => {
   const [heading, setHeading] = React.useState('Have something worth filming?');
   const [body, setBody]       = React.useState("Got one idea? Let's make it happen. We move quickly.");
 
@@ -134,7 +134,7 @@ const ContactCTA = ({ editMode, Editable }) => {
               <li>Full edit included</li>
               <li>Delivered within 5 business days</li>
             </ul>
-            <button className="pricing-btn" onClick={() => document.querySelector('.contact-form input')?.focus()}>Start Starter →</button>
+            <button className="pricing-btn" onClick={() => onPlan('starter')}>Start Starter →</button>
           </div>
 
           {/* Growth */}
@@ -151,7 +151,7 @@ const ContactCTA = ({ editMode, Editable }) => {
               <li>Dedicated Creative Director</li>
               <li>Priority scheduling</li>
             </ul>
-            <button className="pricing-btn pricing-btn--primary" onClick={() => document.querySelector('.contact-form input')?.focus()}>Start Growth →</button>
+            <button className="pricing-btn pricing-btn--primary" onClick={() => onPlan('growth')}>Start Growth →</button>
           </div>
 
           {/* Partner */}
@@ -167,7 +167,7 @@ const ContactCTA = ({ editMode, Editable }) => {
               <li>First pick from crew community</li>
               <li>Direct line with the Creative Director</li>
             </ul>
-            <button className="pricing-btn" onClick={() => document.querySelector('.contact-form input')?.focus()}>Become a partner →</button>
+            <button className="pricing-btn" onClick={() => onPlan('partner')}>Become a partner →</button>
           </div>
         </div>
 
