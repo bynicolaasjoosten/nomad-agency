@@ -754,3 +754,90 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   justify-content: flex-end;
 }
+
+/* ─── Pricing ───────────────────────────────────────────────── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.pricing-card {
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.pricing-card--featured {
+  border-color: #3b82f6;
+}
+.pricing-badge {
+  display: inline-block;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+.pricing-tier {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); margin: 0 0 12px;
+}
+.pricing-price {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1; letter-spacing: -0.02em;
+  color: #fff; margin: 0;
+}
+.pricing-per {
+  font-size: 13px; color: rgba(255,255,255,0.5);
+  margin: 6px 0 4px;
+}
+.pricing-desc {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  font-style: italic; margin: 0;
+}
+.pricing-divider {
+  height: 1px; background: rgba(255,255,255,0.1);
+  margin: 24px 0;
+}
+.pricing-list {
+  list-style: none; padding: 0; margin: 0 0 32px;
+  display: flex; flex-direction: column; gap: 12px;
+  flex: 1;
+}
+.pricing-list li {
+  font-size: 14px; color: rgba(255,255,255,0.75);
+  padding-left: 20px; position: relative;
+}
+.pricing-list li::before {
+  content: '✓';
+  position: absolute; left: 0;
+  color: #4ade80; font-size: 12px;
+}
+.pricing-btn {
+  width: 100%; padding: 16px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff; font-size: 13px; letter-spacing: 0.1em;
+  cursor: pointer; text-transform: uppercase;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  font-family: var(--font-body);
+}
+.pricing-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.5);
+}
+.pricing-btn--primary {
+  background: #fff; color: #000;
+  border-color: #fff;
+}
+.pricing-btn--primary:hover {
+  background: #e5e7eb; border-color: #e5e7eb;
+}
+@media (max-width: 900px) {
+  .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+}

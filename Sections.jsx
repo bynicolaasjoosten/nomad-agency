@@ -78,7 +78,7 @@ const Clients = ({ visible }) => {
 
 const ContactCTA = ({ editMode, Editable }) => {
   const [heading, setHeading] = React.useState('Have something worth filming?');
-  const [body, setBody]       = React.useState("Send the idea. We move quickly.");
+  const [body, setBody]       = React.useState("Got one idea? Let's make it happen. We move quickly.");
 
   const [name, setName]       = React.useState('');
   const [email, setEmail]     = React.useState('');
@@ -112,6 +112,65 @@ const ContactCTA = ({ editMode, Editable }) => {
     <section id="contact" className="section" style={{ paddingTop: 128, paddingBottom: 128 }}>
       <div className="container">
         <div className="section-label"><span className="num">03</span><span>Get in Touch</span></div>
+
+        {/* Pricing */}
+        <div className="pricing-header" style={{ marginTop: 48 }}>
+          <p className="eyebrow" style={{ letterSpacing: '0.2em', marginBottom: 12 }}>SUBSCRIPTIONS</p>
+          <h2 className="h1">Built for brands that move.</h2>
+          <p className="body-lg muted" style={{ marginTop: 16, maxWidth: '56ch' }}>Pick a plan that fits your content needs. No hassle, sharp productions every month.</p>
+        </div>
+
+        <div className="pricing-grid" style={{ marginTop: 48, marginBottom: 96 }}>
+          {/* Starter */}
+          <div className="pricing-card">
+            <p className="pricing-tier">STARTER</p>
+            <p className="pricing-price">€700</p>
+            <p className="pricing-per">per month</p>
+            <p className="pricing-desc">1 commercial · great to get started</p>
+            <div className="pricing-divider" />
+            <ul className="pricing-list">
+              <li>1 commercial of 30 seconds</li>
+              <li>Professional crew on set</li>
+              <li>Full edit included</li>
+              <li>Delivered within 5 business days</li>
+            </ul>
+            <button className="pricing-btn" onClick={() => document.querySelector('.contact-form input')?.focus()}>Start Starter →</button>
+          </div>
+
+          {/* Growth */}
+          <div className="pricing-card pricing-card--featured">
+            <span className="pricing-badge">Most chosen</span>
+            <p className="pricing-tier">GROWTH</p>
+            <p className="pricing-price">€1,500</p>
+            <p className="pricing-per">per month</p>
+            <p className="pricing-desc">2 productions · for growing brands</p>
+            <div className="pricing-divider" />
+            <ul className="pricing-list">
+              <li>2 productions per month</li>
+              <li>Behind-the-scenes included</li>
+              <li>Dedicated Creative Director</li>
+              <li>Priority scheduling</li>
+            </ul>
+            <button className="pricing-btn pricing-btn--primary" onClick={() => document.querySelector('.contact-form input')?.focus()}>Start Growth →</button>
+          </div>
+
+          {/* Partner */}
+          <div className="pricing-card">
+            <p className="pricing-tier">PARTNER</p>
+            <p className="pricing-price">€3,500</p>
+            <p className="pricing-per">per month</p>
+            <p className="pricing-desc">4 productions · for serious brands</p>
+            <div className="pricing-divider" />
+            <ul className="pricing-list">
+              <li>4 productions per month</li>
+              <li>Monthly strategy session</li>
+              <li>First pick from crew community</li>
+              <li>Direct line with the Creative Director</li>
+            </ul>
+            <button className="pricing-btn" onClick={() => document.querySelector('.contact-form input')?.focus()}>Become a partner →</button>
+          </div>
+        </div>
+
         <div className="cta-grid" style={{ marginTop: 48 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             <Editable tag="p" className="body-lg" value={body} onChange={setBody} editMode={editMode} />
